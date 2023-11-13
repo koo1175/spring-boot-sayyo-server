@@ -4,7 +4,7 @@
 <mapper namespace="com.pj.sayyo.model.rLike.mapper.RLikeMapper">
 
     <insert id="like" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto">
-        INSERT INTO R_LIKES(MEMBER_ID, REPLY_NUM, LIKE_STATE)
+        INSERT INTO RLIKES(MEMBER_ID, REPLY_NUM, LIKE_STATE)
         VALUES (#{memberId}, #{replyNum}, 1)
     </insert>
 
@@ -16,7 +16,7 @@
     </update>
 
     <insert id="dislike" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto">
-        INSERT INTO R_LIKES(MEMBER_ID, REPLY_NUM, LIKE_STATE)
+        INSERT INTO RLIKES(MEMBER_ID, REPLY_NUM, LIKE_STATE)
         VALUES (#{memberId}, #{replyNum}, 2)
     </insert>
 
@@ -28,7 +28,7 @@
     </insert>
 
     <update id="cancelLike" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto">
-        UPDATE R_LIKES
+        UPDATE RLIKES
         SET LIKE_STATE = 0
         WHERE MEMBER_ID = #{memberId} AND REPLY_NUM = #{replyNum}
     </update>
@@ -47,19 +47,19 @@
 
     <select id="findLike" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto" resultType="java.lang.Integer">
         SELECT COUNT(*)
-        FROM R_LIKES
+        FROM RLIKES
         WHERE MEMBER_ID = #{memberId} AND REPLY_NUM = #{replyNum}
     </select>
 
 
     <select id="findState" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto" resultType="com.pj.sayyo.model.rLike.dto.RLikeDto">
         SELECT LIKE_STATE
-        FROM R_LIKES
+        FROM RLIKES
         WHERE MEMBER_ID = #{memberId} AND REPLY_NUM = #{replyNum}
     </select>
 
     <delete id="deleteLike" parameterType="com.pj.sayyo.model.rLike.dto.RLikeDto">
-        DELETE FROM R_LIKES
+        DELETE FROM RLIKES
         WHERE MEMBER_ID = #{memberId} AND REPLY_NUM = #{replyNum}
     </delete>
 

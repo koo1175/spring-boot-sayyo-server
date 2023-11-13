@@ -4,30 +4,30 @@
 <mapper namespace="com.pj.sayyo.model.answer.mapper.AnswerMapper">
     <!--                      Answer                       -->
     <insert id="regist" parameterType="com.pj.sayyo.model.answer.dto.AnswerDto">
-        INSERT INTO answer(ID, CONTENT, ISVALID)
+        INSERT INTO ANSWER(ID, CONTENT, ISVALID)
         VALUES (#{id}, #{content},  #{isValid})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.answer.dto.AnswerDto">
         SELECT ID, CONTENT, ISVALID
-        FROM answer
+        FROM ANSWER
     </select>
 
     <update id="modify" parameterType="com.pj.sayyo.model.answer.dto.AnswerDto">
-        UPDATE answer
+        UPDATE ANSWER
         SET CONTENT = #{content}, ISVALID = #{isValid}
         WHERE ID = #{id}
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.answer.dto.AnswerDto">
-        DELETE FROM answer
+        DELETE FROM ANSWER
         WHERE ID = #{id}
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.answer.dto.AnswerDto" resultType="com.pj.sayyo.model.answer.dto.AnswerDto">
         SELECT ID, CONTENT, ISVALID
-        FROM answer
+        FROM ANSWER
         WHERE ID = #{id}
     </select>
 </mapper>

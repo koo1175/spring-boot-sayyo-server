@@ -4,14 +4,14 @@
 <mapper namespace="com.pj.sayyo.model.reply.mapper.ReplyMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.reply.dto.ReplyDto">
-        INSERT INTO REPLY(ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, CURRENT_DATE)
+        INSERT INTO REPLY(ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, NOW_DATE)
         VALUES (reply_id_seq.nextval, #{politicianNum},
                 #{nickname}, #{likes}, #{dislike}, #{content}, #{currentDate})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.reply.dto.ReplyDto">
-        SELECT ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, CURRENT_DATE
+        SELECT ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, NOW_DATE
         FROM REPLY
     </select>
 
@@ -27,7 +27,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.reply.dto.ReplyDto" resultType="com.pj.sayyo.model.reply.dto.ReplyDto">
-        SELECT (ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, CURRENT_DATE)
+        SELECT (ID, POLITICIAN_NUM, NICKNAME, LIKES, DISLIKE, CONTENT, NOW_DATE)
         FROM REPLY
         WHERE POLITICIAN_NUM = #{politicianNum}
     </select>
