@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.sayyo.model.issue.mapper.IssueMapper">
+
+<insert id="regist" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
+        INSERT INTO ISSUE(ID, REGION, TITLE, URL, REPORTS)
+        VALUES (#{id}, #{region}, #{title}, #{url}, 0)
+    </insert>
+
+    <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
+        SELECT ID, REGION, TITLE, URL, REPORTS
+        FROM ISSUE
+    </select>
+
+    <update id="modify" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
+        UPDATE ISSUE
+        SET TITLE = #{title}
+        WHERE ID = #{id}
+    </update>
+
+    <update id="report" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
+        UPDATE ISSUE
+        SET REPORTS = REPORTS+1
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
+        DELETE ISSUE
+        WHERE ID = #{id}
+    </delete>
+
+    <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.IssueDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
+        SELECT (ID, REGION, TITLE, URL, REPORTS)
+        FROM ISSUE
+        WHERE ID = #{id}
+    </select>
+</mapper>
