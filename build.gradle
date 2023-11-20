@@ -4,6 +4,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
+
+
 group = 'com.pj'
 version = '0.0.1-SNAPSHOT'
 
@@ -16,6 +18,10 @@ repositories {
 }
 
 dependencies {
+	// websocket
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

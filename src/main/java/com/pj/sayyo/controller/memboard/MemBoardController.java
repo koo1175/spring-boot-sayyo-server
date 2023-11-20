@@ -1,4 +1,4 @@
-package com.pj.sayyo.controller.board;
+package com.pj.sayyo.controller.memboard;
 
 import com.pj.sayyo.model.board.dto.BoardDto;
 import com.pj.sayyo.service.board.BoardService;
@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "https://localhost:3000/")
 @RequestMapping("/memBoard")
 public class MemBoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());

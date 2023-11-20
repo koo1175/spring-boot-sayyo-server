@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "https://localhost:3000/")
 @RequestMapping("/voting")
 public class VotingController {
 
