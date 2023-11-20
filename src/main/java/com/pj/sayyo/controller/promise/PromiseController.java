@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "https://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/promise")
 public class PromiseController {
     Logger logger = LoggerFactory.getLogger(this.getClass());

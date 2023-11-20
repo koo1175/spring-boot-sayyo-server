@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @Controller
-@CrossOrigin(origins = "https://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/rlike")
 public class RLikeController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
