@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "http://10.20.100.121:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/member")
 public class MemberController {
     Logger logger = LoggerFactory.getLogger(this.getClass());

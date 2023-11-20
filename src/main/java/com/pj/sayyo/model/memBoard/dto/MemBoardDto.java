@@ -13,6 +13,7 @@ public class MemBoardDto {
     private String content;
     // 글 작성 날짜
     private String nowDate;
+    private int views;
 
     public int getMemberId() {
         return memberId;
@@ -52,5 +53,13 @@ public class MemBoardDto {
 
     public void setNowDate(String nowDate) {
         this.nowDate = nowDate;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 }
