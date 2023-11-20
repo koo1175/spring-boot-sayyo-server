@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 @Component
 public class SessionHandler extends TextWebSocketHandler {
-    private static final int MAX_MESSAGES = 100;
+    private static final int MAX_MESSAGES = 500;
 
     private List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
     private List<ChatDto> messages = new CopyOnWriteArrayList<>();
@@ -34,7 +34,7 @@ public class SessionHandler extends TextWebSocketHandler {
     }
 
     public void addMessage(ChatDto chatDto) throws IOException {
-        // 메세지 갯수를 100개로 제한함 ( 휘발성 메세지 )
+        // 메세지 갯수를 500개로 제한함 ( 휘발성 메세지 )
         messages.add(chatDto);
         if (messages.size() > MAX_MESSAGES) {
             messages.remove(0);
