@@ -2,7 +2,6 @@ package com.pj.sayyo.model.member.mapper;
 
 import com.pj.sayyo.model.member.dto.MemberDto;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

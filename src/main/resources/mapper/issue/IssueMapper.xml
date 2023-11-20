@@ -3,13 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pj.sayyo.model.issue.mapper.IssueMapper">
 
-<insert id="regist" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
-        INSERT INTO ISSUE(ID, REGION, TITLE, URL, REPORTS)
-        VALUES (#{id}, #{region}, #{title}, #{url}, 0)
+    <!--  ID 필드는 AUTO_INCREMENT로 AUTO COUNTING  -->
+    <insert id="regist" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
+        INSERT INTO ISSUE(SEARCH, TITLE, URL, LINK, IMAGE, CONTENT)
+        VALUES (#{search}, #{title}, #{url}, #{link}, #{image}, #{content})
     </insert>
 
     <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
-        SELECT ID, REGION, TITLE, URL, REPORTS
+        SELECT SEARCH, TITLE, URL, LINK, IMAGE, CONTENT
         FROM ISSUE
     </select>
 
@@ -31,8 +32,8 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.IssueDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
-        SELECT (ID, REGION, TITLE, URL, REPORTS)
+        SELECT (SEARCH, TITLE, URL, LINK, IMAGE, CONTENT)
         FROM ISSUE
-        WHERE ID = #{id}
+        WHERE SEARCH = #{search}
     </select>
 </mapper>
