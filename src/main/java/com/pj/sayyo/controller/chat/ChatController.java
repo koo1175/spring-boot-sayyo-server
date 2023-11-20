@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 @Controller
 @RequestMapping("/chat")
@@ -19,6 +18,7 @@ public class ChatController {
     @PostMapping("/send")
     @ResponseBody
     private ChatDto send(@RequestBody ChatDto chatDto) throws IOException {
+        System.out.println(chatDto.toString());
         return chatService.send(chatDto);
     }
 }
