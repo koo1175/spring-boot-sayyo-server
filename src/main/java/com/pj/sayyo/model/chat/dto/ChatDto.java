@@ -8,6 +8,15 @@ public class ChatDto {
     private String content;
     private Date sendTime;
 
+    @Override
+    public String toString() {
+        return "ChatDto{" +
+                "nickname='" + nickname + '\'' +
+                ", content='" + content + '\'' +
+                ", sendTime=" + sendTime +
+                '}';
+    }
+
     public String getNickname() {
         return nickname;
     }
