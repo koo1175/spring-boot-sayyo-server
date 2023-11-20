@@ -17,7 +17,7 @@ public class ChatController {
 
     @PostMapping("/send")
     @ResponseBody
-    private ChatDto send(@RequestBody ChatDto chatDto) throws IOException {
+    private ChatDto send(@RequestBody ChatDto chatDto) {
         System.out.println(chatDto.toString());
         return chatService.send(chatDto);
     }
