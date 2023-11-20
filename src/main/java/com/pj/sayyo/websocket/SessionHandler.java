@@ -1,5 +1,6 @@
 package com.pj.sayyo.websocket;
 
+import com.pj.sayyo.model.chat.dto.ChatDto;
 import org.apache.logging.log4j.spi.CopyOnWrite;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -13,17 +14,32 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 @Component
 public class SessionHandler extends TextWebSocketHandler {
+    private static final int MAX_MESSAGES = 100;
 
     private List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
+    private List<ChatDto> messages = new CopyOnWriteArrayList<>();
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception{
+
         sessions.add(session);
+        for (ChatDto message : messages){
+            session.sendMessage(new TextMessage(message.getNickname() + ": " + message.getContent()));
+        }
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception{
         sessions.remove(session);
+    }
+
+    public void addMessage(ChatDto chatDto) throws IOException {
+        // 메세지 갯수를 100개로 제한함 ( 휘발성 메세지 )
+        messages.add(chatDto);
+        if (messages.size() > MAX_MESSAGES) {
+            messages.remove(0);
+        }
+        broadcast(chatDto.getNickname() + ": " + chatDto.getContent());
     }
 
     public void broadcast(String message) throws IOException {

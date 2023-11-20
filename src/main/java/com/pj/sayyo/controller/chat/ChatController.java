@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/chat")
 public class ChatController {
     @Autowired
@@ -18,13 +18,7 @@ public class ChatController {
 
     @PostMapping("/send")
     @ResponseBody
-    private HashMap<String, Object> send(@RequestBody ChatDto chatDto){
-        HashMap<String, Object> mv = new HashMap<>();
-
-        ChatDto message = chatService.send(chatDto);
-        mv.put("message", message);
-        System.out.println(message.toString());
-
-        return mv;
+    private ChatDto send(@RequestBody ChatDto chatDto) throws IOException {
+        return chatService.send(chatDto);
     }
 }
