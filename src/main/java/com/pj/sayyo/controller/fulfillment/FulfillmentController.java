@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -67,4 +68,11 @@ public class FulfillmentController {
         mv.put("list", list);
     }
 
+    @GetMapping("/returnF")
+    @ResponseBody
+    public BigDecimal returnF(@RequestBody FulfillmentDto fulfillmentDto) {
+        BigDecimal f = fulfillmentService.returnF(fulfillmentDto);
+
+        return f;
+    }
 }

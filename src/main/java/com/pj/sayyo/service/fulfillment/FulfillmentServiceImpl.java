@@ -5,6 +5,7 @@ import com.pj.sayyo.model.fulfillment.mapper.FulfillmentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -35,5 +36,10 @@ public class FulfillmentServiceImpl implements FulfillmentService{
     @Override
     public List<FulfillmentDto> findSearch(FulfillmentDto fulfullmentDto) {
         return fulfillmentMapper.findSearch(fulfullmentDto);
+    }
+
+    @Override
+    public BigDecimal returnF(FulfillmentDto fulfillmentDto){
+        return fulfillmentMapper.returnF(fulfillmentDto);
     }
 }
