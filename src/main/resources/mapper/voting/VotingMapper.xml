@@ -4,7 +4,7 @@
 <mapper namespace="com.pj.sayyo.model.voting.mapper.VotingMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">
-        INSERT INTO VOTING(TITLE, NUM, AFFIL, NAME, SCORE)
+        INSERT INTO VOTING(TITLE, NUM, AFFIL, NAME, SCORE, PERCENTAGE)
         VALUES (#{title}, #{num},
                 #{affil}, #{name}, #{score})
     </insert>
@@ -35,4 +35,9 @@
         WHERE TITLE = #{title} AND MEMBER_ID = #{memberId}
     </select>
 
+    <update id="candidates" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">
+        UPDATE VOTING
+        SET PERCENTAGE = SCORE / (SELECT SUM(SCORE) FROM VOTING v2 WHERE VOTING.TITLE = v2.TITLE);
+        WHERE TITLE = #{title}
+    </update>
 </mapper>

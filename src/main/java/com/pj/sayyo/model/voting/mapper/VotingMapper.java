@@ -11,7 +11,9 @@ public interface VotingMapper {
     int regist(VotingDto votingDto);
     int delete(VotingDto votingDto);
     List<VotingDto> findAll();
+    List<VotingDto> candidates();
     int voteScore(VotingDto votingDto);
     int voted(VotedDto votedDto);
     int findVoted(VotedDto votedDto);
+
 }

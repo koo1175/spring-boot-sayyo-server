@@ -82,4 +82,12 @@ public class VotingController {
         return count;
     }
 
+    @GetMapping("/candidates")
+    @ResponseBody
+    private HashMap<String, Object> candidates(@RequestBody VotedDto votedDto) {
+        HashMap<String, Object> mv = new HashMap<>();
+        List<VotingDto> candidate = votingService.candidates();
+        mv.put("candidates", candidate);
+        return mv;
+    }
 }
