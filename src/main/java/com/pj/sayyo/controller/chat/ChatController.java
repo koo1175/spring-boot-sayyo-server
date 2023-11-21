@@ -18,9 +18,9 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @PostMapping("/send")
     // 메세지 전달할 경로
     @SendTo("/topic/messages")
+    @PostMapping("/send")
     @ResponseBody
     private String send(@RequestBody ChatDto chatDto) {
         System.out.println(chatDto.toString());
