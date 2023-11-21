@@ -59,27 +59,27 @@ public class VotingController {
     }
 
 
-    //투표한사람 리스트 POST
+    // 투표가 정상적으로 됐을 경우 1 반환
     @PostMapping("/voted")
     @ResponseBody
-    private HashMap<String, Object> voted(@RequestBody VotedDto votedDto){
+    private Integer voted(@RequestBody VotedDto votedDto){
         HashMap<String, Object> mv = new HashMap<>();
 
         int resultCnt = votingService.voted(votedDto);
         mv.put("voted", resultCnt);
         System.out.println(resultCnt);
 
-        return mv;
+        return resultCnt;
     }
 
     //투표한사람 리스트 POST 0이면 투표 안함 1이면 투표 함
     @PostMapping("/findVoted")
     @ResponseBody
-    private HashMap<String, Object> votedCount(@RequestBody VotedDto votedDto) {
+    private Integer votedCount(@RequestBody VotedDto votedDto) {
         HashMap<String, Object> mv = new HashMap<>();
         int count = votingService.findVoted(votedDto);
         mv.put("count", count);
-        return mv;
+        return count;
     }
 
 }
