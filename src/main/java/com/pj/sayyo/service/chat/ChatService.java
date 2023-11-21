@@ -8,4 +8,6 @@ public interface ChatService {
     ChatDto send(ChatDto chatDto);
     void addMessage(ChatDto chatDto);
     List<ChatDto> allChat();
+    int deleteOldest();
+    int count(ChatDto chatDto);
 }

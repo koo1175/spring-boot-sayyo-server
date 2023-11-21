@@ -18,11 +18,14 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    // 메세지 전달할 경로
-    @SendTo("/topic/messages")
+//    // 메세지 전달할 경로
+//    @SendTo("/topic/messages")
     @PostMapping("/send")
-    @ResponseBody
     private String send(@RequestBody ChatDto chatDto) {
+        int messageCount = chatService.count(chatDto);
+        if(messageCount >= 100){
+            chatService.deleteOldest();
+        }
         System.out.println(chatDto.toString());
         chatService.addMessage(chatDto);
         return "메세지 전송 완료"+chatDto.toString(); // 메시지 저장

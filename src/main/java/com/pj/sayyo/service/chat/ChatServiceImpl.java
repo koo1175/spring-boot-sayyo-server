@@ -43,4 +43,12 @@ public class ChatServiceImpl implements ChatService{
     public LinkedList<ChatDto> allChat(){
         return chatMapper.allChat();
     }
+    @Override
+    public int deleteOldest(){
+        return chatMapper.deleteOldest();
+    }
+    @Override
+    public int count(ChatDto chatDto){
+        return chatMapper.count(chatDto);
+    }
 }
