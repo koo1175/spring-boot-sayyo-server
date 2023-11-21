@@ -56,17 +56,17 @@ public class MemberController {
 
     @PostMapping("/login")
     @ResponseBody
-    private boolean login(@RequestBody MemberDto memberDto){
+    private MemberDto login(@RequestBody MemberDto memberDto){
         MemberDto m = memberService.login(memberDto);
         if(m == null){
             // 받아온 id와 pw에 해당하는 유저가 없을때
             System.out.println("로그인 실패");
-            return false;
+            return m;
         }
         System.out.println(m.toString());
         System.out.println("로그인 성공");
 
-        return true;
+        return m;
     }
 
     @GetMapping("/findAll")
