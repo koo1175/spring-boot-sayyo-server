@@ -75,10 +75,10 @@ public class PoliticianController {
     
     @PostMapping("/findSearch")
     @ResponseBody
-    public void selectFind(@RequestBody PoliticianDto politicianDto) {
+    public PoliticianDto selectFind(@RequestBody PoliticianDto politicianDto) {
         HashMap<String, Object> mv = new HashMap<>();
-        List<PoliticianDto> list = politicianService.findSearch(politicianDto);
+        PoliticianDto politician = politicianService.findSearch(politicianDto);
 
-        mv.put("list", list);
+        return politician;
     }
 }

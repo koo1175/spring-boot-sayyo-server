@@ -41,7 +41,7 @@ public class PoliticianServiceImpl implements PoliticianService {
     }
 
     @Override
-    public List<PoliticianDto> findSearch(PoliticianDto politicianDto) {
+    public PoliticianDto findSearch(PoliticianDto politicianDto) {
         return politicianMapper.findSearch(politicianDto);
     }
 }

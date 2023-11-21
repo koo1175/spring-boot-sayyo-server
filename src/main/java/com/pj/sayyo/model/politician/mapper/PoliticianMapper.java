@@ -15,7 +15,5 @@ public interface PoliticianMapper {
     int deleteLike(PoliticianDto politicianDto);
     int likes(PoliticianDto politicianDto);
     int dislike(PoliticianDto politicianDto);
-    List<PoliticianDto> findSearch(PoliticianDto politicianDto);
-
-
+    PoliticianDto findSearch(PoliticianDto politicianDto);
 }
