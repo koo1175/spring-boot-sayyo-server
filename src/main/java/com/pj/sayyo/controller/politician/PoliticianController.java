@@ -33,7 +33,7 @@ public class PoliticianController {
         return mv;
     }
 
-    @GetMapping("/findAll")
+    @PostMapping("/findAll")
     @ResponseBody
     private HashMap<String, Object> findAll(){
         HashMap<String, Object> mv = new HashMap<>();
@@ -74,7 +74,7 @@ public class PoliticianController {
 
     }
     
-    @GetMapping("/findSearch")
+    @PostMapping("/findSearch")
     @ResponseBody
     public void selectFind(@RequestBody PoliticianDto politicianDto) {
         HashMap<String, Object> mv = new HashMap<>();
