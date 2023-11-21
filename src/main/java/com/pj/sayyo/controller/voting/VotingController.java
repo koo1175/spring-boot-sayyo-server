@@ -69,6 +69,12 @@ public class VotingController {
         mv.put("voted", resultCnt);
         System.out.println(resultCnt);
 
+        if(resultCnt == 1){
+            VotingDto votingDto = new VotingDto();
+            votingDto.setTitle(votedDto.getTitle());
+            votingDto.setNum(votedDto.getNum());
+            votingService.voteScore(votingDto);
+        }
         return resultCnt;
     }
 
