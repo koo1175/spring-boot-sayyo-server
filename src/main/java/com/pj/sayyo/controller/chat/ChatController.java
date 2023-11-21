@@ -5,22 +5,22 @@ import com.pj.sayyo.model.chat.dto.ChatDto;
 import com.pj.sayyo.service.chat.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@RestController("/chat")
 @Controller
-@RequestMapping("/chat")
 public class ChatController {
     @Autowired
     private ChatService chatService;
 
     @PostMapping("/send")
     // 메세지 전달할 경로
-    @SendTo("/send/message")
+    @SendTo("/topic/messages")
     @ResponseBody
     private String send(@RequestBody ChatDto chatDto) {
         System.out.println(chatDto.toString());
@@ -32,6 +32,7 @@ public class ChatController {
     @GetMapping("/allChat")
     public ResponseEntity<List<ChatDto>> allChat(){
         List<ChatDto> messages = chatService.allChat();
+        System.out.println(messages);
         return ResponseEntity.ok(messages);
     }
 }
