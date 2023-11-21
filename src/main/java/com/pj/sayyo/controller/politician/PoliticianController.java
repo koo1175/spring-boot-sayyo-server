@@ -78,7 +78,7 @@ public class PoliticianController {
     public PoliticianDto selectFind(@RequestBody PoliticianDto politicianDto) {
         HashMap<String, Object> mv = new HashMap<>();
         PoliticianDto politician = politicianService.findSearch(politicianDto);
-
+        System.out.println(politician.toString());
         return politician;
     }
 }

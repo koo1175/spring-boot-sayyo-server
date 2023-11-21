@@ -18,6 +18,19 @@ public class PoliticianDto {
     // 직급 ( 대통령, 국회의원, 시장 )
     private String grade;
 
+    @Override
+    public String toString() {
+        return "PoliticianDto{" +
+                "id=" + id +
+                ", region='" + region + '\'' +
+                ", name='" + name + '\'' +
+                ", likes=" + likes +
+                ", dislike=" + dislike +
+                ", birth=" + birth +
+                ", grade='" + grade + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
