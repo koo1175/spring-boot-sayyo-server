@@ -15,5 +15,4 @@ public interface VotingMapper {
     int voteScore(VotingDto votingDto);
     int voted(VotedDto votedDto);
     int findVoted(VotedDto votedDto);
-
 }
