@@ -30,9 +30,9 @@ public class ChatController {
 
     // 전체 채팅 내역 조회
     @GetMapping("/allChat")
-    public ResponseEntity<List<ChatDto>> allChat(){
+    public List<ChatDto> allChat(){
         List<ChatDto> messages = chatService.allChat();
         System.out.println(messages);
-        return ResponseEntity.ok(messages);
+        return messages;
     }
 }
