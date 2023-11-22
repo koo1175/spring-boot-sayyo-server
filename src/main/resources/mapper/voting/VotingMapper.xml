@@ -37,6 +37,7 @@
 
     <update id="candidates" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">
         UPDATE VOTING
-        SET PERCENTAGE = SCORE / (SELECT SUM(SCORE) * 100 FROM VOTING WHERE VOTING.TITLE = #{title})
+        SET PERCENTAGE = SCORE / (SELECT SUM(SCORE) FROM VOTING WHERE TITLE = #{title}) * 100
+        WHERE TITLE = #{title};
     </update>
 </mapper>
