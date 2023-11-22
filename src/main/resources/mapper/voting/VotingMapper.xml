@@ -15,7 +15,7 @@
     </delete>
 
     <select id="findAll" resultType="com.pj.sayyo.model.voting.dto.VotingDto">
-        SELECT * FROM VOTING
+        SELECT (TITLE, NUM, AFFIL, NAME, SCORE, PERCENTAGE) FROM VOTING
     </select>
 
     <update id="voteScore" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">

@@ -19,13 +19,6 @@
         FROM CHAT
     </select>
 
-    <select id="deleteTarget" resultType="com.pj.sayyo.model.chat.dto.ChatDto">
-        SELECT SEND_TIME
-        FROM CHAT
-        ORDER BY SEND_TIME
-        LIMIT 1
-    </select>
-
     <delete id="deleteOldest">
         DELETE FROM CHAT
         ORDER BY SEND_TIME
