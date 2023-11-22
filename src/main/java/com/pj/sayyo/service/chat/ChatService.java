@@ -9,4 +9,11 @@ public interface ChatService {
     List<ChatDto> allChat();
     int deleteOldest();
     int count(ChatDto chatDto);
+
+//    // websocket
+//    void enterChat(ChatDto chatDto, WebSocketSession session);
+//    void leaveChat(ChatDto chatDto, WebSocketSession session);
+//    <T> void sendMessage(WebSocketSession session, T message);
+//    ChatRoom findRoomById(String roomId);
+//    ChatRoom createRoom();
 }

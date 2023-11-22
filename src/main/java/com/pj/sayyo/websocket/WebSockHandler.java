@@ -2,16 +2,19 @@
 //
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.pj.sayyo.model.chat.dto.ChatDto;
-//import com.pj.sayyo.model.chat.mapper.ChatMapper;
+//import com.pj.sayyo.model.chat.dto.ChatDto.MessageType;
+//import com.pj.sayyo.model.chat.dto.ChatRoom;
+//import com.pj.sayyo.service.chat.ChatService;
 //import lombok.RequiredArgsConstructor;
 //import lombok.extern.slf4j.Slf4j;
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
 //import org.springframework.web.socket.CloseStatus;
 //import org.springframework.web.socket.TextMessage;
+//import org.springframework.web.socket.WebSocketMessage;
 //import org.springframework.web.socket.WebSocketSession;
 //import org.springframework.web.socket.handler.TextWebSocketHandler;
 //
-//import java.io.IOException;
 //import java.util.HashMap;
 //import java.util.HashSet;
 //import java.util.Map;
@@ -22,52 +25,64 @@
 //@Component
 //@RequiredArgsConstructor
 //public class WebSockHandler extends TextWebSocketHandler {
-//    private final ObjectMapper mapper;
-//    // 현재 연결된 세션들
-//    private final Set<WebSocketSession> sessions = new HashSet<>();
-//
-//    // chatRoomId: {session1, session2}
-//    private final Map<Long,Set<WebSocketSession>> chatRoomSessionMap = new HashMap<>();
-//
-//
-//    private static final ConcurrentHashMap<String, WebSocketSession> CLIENTS = new ConcurrentHashMap<String, WebSocketSession>();
-//
-//    // 소켓 연결 확인
-//    @Override
-//    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-////        CLIENTS.put(session.getId(), session);
-//        log.info("{} 연결됨", session.getId());
-//        sessions.add(session);
-//    }
-//
+//    @Autowired
+//    private ChatService chatService;
+//    @Autowired
+//    private ObjectMapper mapper;
 //
 //    @Override
-//    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-////        CLIENTS.remove(session.getId());
-//        log.info("{} 연결 끊김", session.getId());
-//        sessions.remove(session);
-//    }
+//    public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception{
+//        String payload = (String) message.getPayload();
+//        System.out.println("payload : "+ payload);
 //
-//    // 소켓 통신 시 메세지의 전송을 다루는 부분
-//    @Override
-//    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-//        String id = session.getId();  //메시지를 보낸 아이디
-//        String payload = message.getPayload();
-//        log.info("payload {}", payload);
-//        // payload -> chatMessageDto로 변환
 //        ChatDto chatDto = mapper.readValue(payload, ChatDto.class);
-//        log.info("session {}", chatDto.toString());
+//        System.out.println("session : "+chatDto.toString());
 //
-//        // 메모리 상에 채팅방에 대한 세션 없으면 만들어줌
+//        ChatRoom room = chatService.findRoomById(chatDto.getRoomId());
+//        System.out.println("room : "+room.toString());
 //
-//        CLIENTS.entrySet().forEach( arg->{
-//            if(!arg.getKey().equals(id)) {  //같은 아이디가 아니면 메시지를 전달합니다.
-//                try {
-//                    arg.getValue().sendMessage(message);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+//        room.handleAction(session, chatDto, chatService);
+//
 //    }
+//
+//    // 클라이언트가 접속 시 호출되는 메서드
+//    @Override
+//    public void afterConnectionEstablished(WebSocketSession session) throws Exception{
+//        System.out.println(session + "클라이언트 접속");
+//
+//    }
+//    @Override
+//    public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception{
+//        System.out.println(session + "클라이언트 접속 해제");
+//    }
+//
+//
+//
+////    // 소켓 통신 시 메세지의 전송을 다루는 부분
+////    @Override
+////    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+//////        String id = session.getId();  //메시지를 보낸 아이디
+//////        String payload = message.getPayload();
+//////        ChatDto chatDto = mapper.readValue(payload, ChatDto.class);
+//////
+//////        if (chatDto.getType() == MessageType.ENTER) {
+//////            chatService.enterChat(chatDto, session);
+//////        } else if (chatDto.getType() == MessageType.LEAVE) {
+//////            chatService.leaveChat(chatDto, session);
+//////        } else {
+//////            chatService.sendMessage(chatDto);
+//////        }
+////        String payload = (String) message.getPayload();
+////        log.info("payload : {}",payload);
+////
+//////        TextMessage intialGretting = new TextMessage("Welcome to Chat Server");
+////        //JSON -> Java Object
+////        ChatDto chatMessage = mapper.readValue(payload, ChatDto.class);
+////        log.info("session : {}",chatMessage.toString());
+////
+////        ChatRoom room = chatService.findRoomById(chatMessage.getRoomId());
+////        log.info("room : {}",room.toString());
+////
+////        room.handleAction(session,chatMessage, service);
+////    }
 //}

@@ -4,14 +4,14 @@
 <mapper namespace="com.pj.sayyo.model.memBoard.mapper.MemBoardMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
-        INSERT INTO MEMBOARD(MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS)
+        INSERT INTO MEMBOARD(MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
         VALUES (#{id}, #{num},
                 #{title}, #{content})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
-        SELECT MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS
+        SELECT MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY
         FROM MEMBOARD
     </select>
 
@@ -27,7 +27,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto" resultType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
-        SELECT (MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS)
+        SELECT (MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
         FROM MEMBOARD
         WHERE TITLE = #{title} AND NUM = #{num}
     </select>

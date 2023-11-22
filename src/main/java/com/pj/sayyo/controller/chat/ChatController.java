@@ -3,20 +3,27 @@ package com.pj.sayyo.controller.chat;
 
 import com.pj.sayyo.model.chat.dto.ChatDto;
 import com.pj.sayyo.service.chat.ChatService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@Slf4j
+@RequiredArgsConstructor
 @RequestMapping("/chat")
 public class ChatController {
     @Autowired
     private ChatService chatService;
+
+//    @PostMapping("/create")
+//    public ChatRoom createRoom(){
+//
+//        return chatService.createRoom();
+//    }
 
 //    // 메세지 전달할 경로
 //    @SendTo("/topic/messages")

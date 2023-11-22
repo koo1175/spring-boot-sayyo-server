@@ -14,6 +14,7 @@ public class MemBoardDto {
     // 글 작성 날짜
     private String nowDate;
     private int views;
+    private String category;
 
     public int getMemberId() {
         return memberId;
@@ -61,5 +62,13 @@ public class MemBoardDto {
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
