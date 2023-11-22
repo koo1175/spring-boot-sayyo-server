@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/chat")
 @Controller
+@RestController("/chat")
 public class ChatController {
     @Autowired
     private ChatService chatService;
@@ -21,6 +21,7 @@ public class ChatController {
 //    // 메세지 전달할 경로
 //    @SendTo("/topic/messages")
     @PostMapping("/send")
+    @ResponseBody
     private String send(@RequestBody ChatDto chatDto) {
         int messageCount = chatService.count(chatDto);
         if(messageCount >= 100){
@@ -33,6 +34,7 @@ public class ChatController {
 
     // 전체 채팅 내역 조회
     @GetMapping("/allChat")
+    @ResponseBody
     public List<ChatDto> allChat(){
         List<ChatDto> messages = chatService.allChat();
         System.out.println(messages);

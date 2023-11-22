@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/board")
 public class BoardController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
