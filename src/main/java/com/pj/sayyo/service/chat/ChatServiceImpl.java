@@ -31,7 +31,9 @@ public class ChatServiceImpl implements ChatService{
 
     @Override
     public void addMessage(ChatDto message){
+        // add가 필요할까? 잘 모르겠지만
         messages.add(message);
+        chatMapper.send(message);
     }
 
     @Override

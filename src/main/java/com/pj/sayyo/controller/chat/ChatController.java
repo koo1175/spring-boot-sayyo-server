@@ -34,7 +34,6 @@ public class ChatController {
         System.out.println("==============================");
         System.out.println(chatDto.toString());
         chatService.addMessage(chatDto);
-        chatService.send(chatDto);
         System.out.println("채팅을 보냈습니다.");
         return "메세지 전송 완료"+chatDto.toString(); // 메시지 저장
     }
