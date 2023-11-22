@@ -22,7 +22,7 @@
     <delete id="deleteOldest">
         DELETE FROM CHAT C1
         WHERE C1.SEND_TIME = (
-            SELECT * FROM
+            SELECT emp.SEND_TIME FROM
             (
             SELECT C2.SEND_TIME
             FROM CHAT C2
