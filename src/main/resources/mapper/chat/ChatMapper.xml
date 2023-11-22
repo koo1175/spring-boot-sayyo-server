@@ -19,15 +19,16 @@
         FROM CHAT
     </select>
 
+    <select id="deleteTarget" resultType="com.pj.sayyo.model.chat.dto.ChatDto">
+        SELECT SEND_TIME
+        FROM CHAT
+        ORDER BY SEND_TIME
+        LIMIT 1
+    </select>
+
     <delete id="deleteOldest">
-        DELETE FROM CHAT C1
-        WHERE C1.SEND_TIME = (
-            SELECT emp.SEND_TIME FROM
-            (
-            SELECT C2.SEND_TIME
-            FROM CHAT C2
-            ORDER BY C2.SEND_TIME
-            LIMIT 1
-            ) emp )
+        DELETE FROM CHAT
+        ORDER BY SEND_TIME
+        LIMIT 1
     </delete>
 </mapper>

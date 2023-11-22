@@ -8,6 +8,7 @@ import java.util.LinkedList;
 @Mapper
 public interface ChatMapper {
     void send(ChatDto chatDto);
+
     int deleteOldest();
     int count(ChatDto chatDto);
     LinkedList<ChatDto> allChat();
