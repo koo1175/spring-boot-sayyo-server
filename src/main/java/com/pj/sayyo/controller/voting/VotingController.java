@@ -92,7 +92,7 @@ public class VotingController {
     @ResponseBody
     private HashMap<String, Object> candidates(@RequestBody VotedDto votedDto) {
         HashMap<String, Object> mv = new HashMap<>();
-        int candidate = votingService.candidates();
+        int candidate = votingService.candidates(votedDto);
         System.out.println("candidate요청 결과 : " + candidate);
         mv.put("candidates", candidate);
         return mv;

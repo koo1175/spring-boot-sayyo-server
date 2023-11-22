@@ -13,6 +13,6 @@ public interface VotingService {
     int voteScore(VotingDto votingDto);
     int voted(VotedDto votedDto);
     int findVoted(VotedDto votedDto);
-    int candidates();
+    int candidates(VotedDto votedDto);
 
 }
