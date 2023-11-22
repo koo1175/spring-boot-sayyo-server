@@ -24,11 +24,17 @@ public class ChatController {
     @ResponseBody
     private String send(@RequestBody ChatDto chatDto) {
         int messageCount = chatService.count(chatDto);
+        System.out.println("채팅을 보냅니다.");
         if(messageCount >= 100){
             chatService.deleteOldest();
+            System.out.println("==============================");
+            System.out.println("채팅 메세지가 100개가 넘어갔습니다.");
+            System.out.println("오래된 채팅이 하나 삭제되었습니다.");
         }
+        System.out.println("==============================");
         System.out.println(chatDto.toString());
         chatService.addMessage(chatDto);
+        System.out.println("채팅을 보냈습니다.");
         return "메세지 전송 완료"+chatDto.toString(); // 메시지 저장
     }
 
