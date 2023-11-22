@@ -21,11 +21,11 @@
 
     <delete id="deleteOldest">
         DELETE FROM CHAT
-        WHERE SEND_TIME IN(
+        WHERE SEND_TIME = (
             SELECT SEND_TIME
             FROM CHAT
             ORDER BY SEND_TIME
             LIMIT 1
-            )
+            ) AS tmp
     </delete>
 </mapper>
