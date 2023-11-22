@@ -12,6 +12,7 @@ public class VotingDto {
     private String name;
     //투표 수
     private int score;
+    private double percentage;
 
     public String getTitle() {
         return title;
@@ -53,4 +54,11 @@ public class VotingDto {
         this.score = score;
     }
 
+    public double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
+    }
 }
