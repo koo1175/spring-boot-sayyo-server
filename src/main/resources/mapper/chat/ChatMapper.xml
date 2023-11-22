@@ -26,6 +26,6 @@
             FROM CHAT
             ORDER BY SEND_TIME
             LIMIT 1
-            ) AS tmp
+            )
     </delete>
 </mapper>
