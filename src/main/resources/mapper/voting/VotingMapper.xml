@@ -6,7 +6,7 @@
     <insert id="regist" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">
         INSERT INTO VOTING(TITLE, NUM, AFFIL, NAME, SCORE, PERCENTAGE)
         VALUES (#{title}, #{num},
-                #{affil}, #{name}, #{score})
+                #{affil}, #{name}, #{score}, 0)
     </insert>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">
@@ -15,7 +15,7 @@
     </delete>
 
     <select id="findAll" resultType="com.pj.sayyo.model.voting.dto.VotingDto">
-        SELECT (TITLE, NUM, AFFIL, NAME, SCORE, PERCENTAGE) FROM VOTING
+        SELECT TITLE, NUM, AFFIL, NAME, SCORE, PERCENTAGE FROM VOTING
     </select>
 
     <update id="voteScore" parameterType="com.pj.sayyo.model.voting.dto.VotingDto">

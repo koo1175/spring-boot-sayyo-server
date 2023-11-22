@@ -59,7 +59,7 @@
 //        log.info("session {}", chatDto.toString());
 //
 //        // 메모리 상에 채팅방에 대한 세션 없으면 만들어줌
-//        if(!chatRoomSessionMap.)
+//
 //        CLIENTS.entrySet().forEach( arg->{
 //            if(!arg.getKey().equals(id)) {  //같은 아이디가 아니면 메시지를 전달합니다.
 //                try {
