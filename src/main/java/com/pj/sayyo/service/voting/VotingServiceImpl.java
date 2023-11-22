@@ -28,7 +28,7 @@ public class VotingServiceImpl implements VotingService{
         return votingMapper.findAll();
     }
     @Override
-    public List<VotingDto> candidates() {
+    public int candidates() {
         return votingMapper.candidates();
     }
 
