@@ -36,10 +36,6 @@ public class ChatServiceImpl implements ChatService{
         chatMapper.send(message);
     }
 
-    @Override
-    public ChatDto send(ChatDto chatDto) {
-        return chatMapper.send(chatDto);
-    }
 
     @Override
     public LinkedList<ChatDto> allChat(){
