@@ -12,7 +12,7 @@ public class MemBoardDto {
     // 글 내용
     private String content;
     // 글 작성 날짜
-    private String nowDate;
+    private Date nowDate;
     private int views;
     // 카테고리
     private String category;
@@ -49,11 +49,11 @@ public class MemBoardDto {
         this.content = content;
     }
 
-    public String getNowDate() {
+    public Date getNowDate() {
         return nowDate;
     }
 
-    public void setNowDate(String nowDate) {
+    public void setNowDate(Date nowDate) {
         this.nowDate = nowDate;
     }
 
