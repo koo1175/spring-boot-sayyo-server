@@ -25,7 +25,7 @@ public class WebSockHandler extends TextWebSocketHandler {
         }
     }
 
-    /* Client가 접속 시 호출되는 메서드 */
+    // Client 접속 시 호출되는 메서드
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
@@ -34,7 +34,7 @@ public class WebSockHandler extends TextWebSocketHandler {
         System.out.println(session + " 클라이언트 접속");
     }
 
-    /* Client가 접속 해제 시 호출되는 메서드드 */
+    // Client 접속 해제 시 호출되는 메서드
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {

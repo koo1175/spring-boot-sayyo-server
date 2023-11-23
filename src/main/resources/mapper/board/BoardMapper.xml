@@ -6,7 +6,7 @@
     <insert id="regist" parameterType="com.pj.sayyo.model.board.dto.BoardDto">
         INSERT INTO POLBOARD(ID, NUM, TITLE, CONTENT, NOW_DATE)
         VALUES (#{id}, #{num},
-        #{title}, #{content}, #{currentDate})
+        #{title}, #{content}, #{nowDate})
     </insert>
 
     <select id="findAll"

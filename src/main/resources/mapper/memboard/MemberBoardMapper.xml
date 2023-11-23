@@ -22,7 +22,7 @@
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
-        DELETE MEMBOARD
+        DELETE FROM MEMBOARD
         WHERE NUM = #{num}
     </delete>
 
