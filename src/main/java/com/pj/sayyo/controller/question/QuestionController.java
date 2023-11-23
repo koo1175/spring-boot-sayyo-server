@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/question")
 public class QuestionController {
     Logger logger = LoggerFactory.getLogger(this.getClass());

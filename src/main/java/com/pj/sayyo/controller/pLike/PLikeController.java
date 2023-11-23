@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/plike")
 public class PLikeController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
