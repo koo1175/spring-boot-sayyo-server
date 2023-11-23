@@ -17,7 +17,12 @@ public class PoliticianDto {
     private Date birth;
     // 직급 ( 대통령, 국회의원, 시장 )
     private String grade;
-
+    // 학력
+    private String education;
+    // 수상 경력
+    private String awards;
+    // 경력
+    private String career;
     @Override
     public String toString() {
         return "PoliticianDto{" +
@@ -85,5 +90,29 @@ public class PoliticianDto {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getCareer() {
+        return career;
+    }
+
+    public void setCareer(String career) {
+        this.career = career;
     }
 }
