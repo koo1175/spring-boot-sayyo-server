@@ -5,8 +5,8 @@
 
     <insert id="regist" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
         INSERT INTO MEMBOARD(MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
-        VALUES (#{id}, #{num},
-                #{title}, #{content}, current_date, 0, #{category})
+        VALUES (#{memberId}, #{num},
+                #{title}, #{content}, current_timestamp, 0, #{category})
     </insert>
 
     <select id="findAll"

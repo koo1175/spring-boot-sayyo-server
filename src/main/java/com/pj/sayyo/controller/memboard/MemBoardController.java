@@ -1,13 +1,13 @@
 package com.pj.sayyo.controller.memboard;
 
 import com.pj.sayyo.model.memBoard.dto.MemBoardDto;
-import com.pj.sayyo.service.board.BoardService;
 import com.pj.sayyo.service.memBoard.MemBoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ public class MemBoardController {
 
     @PostMapping("/regist")
     @ResponseBody
-    private HashMap<String, Object> regist(@RequestBody MemBoardDto memboardDto){
+    private HashMap<String, Object> regist(@RequestBody MemBoardDto memboardDto, @RequestParam("file") MultipartFile file){
         HashMap<String, Object> mv = new HashMap<>();
 
         int resultCnt = memBoardService.regist(memboardDto);
