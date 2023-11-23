@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class MemBoardDto {
     // 유저 id
-    private String memberId;
+    private String id;
     // pk 글 num
     private int num;
     // 글 제목
@@ -17,12 +17,12 @@ public class MemBoardDto {
     // 카테고리
     private String category;
 
-    public String getMemberId() {
-        return memberId;
+    public String getId() {
+        return id;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getNum() {
