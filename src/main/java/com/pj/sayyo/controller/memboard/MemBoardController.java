@@ -22,7 +22,7 @@ public class MemBoardController {
 
     @PostMapping("/regist")
     @ResponseBody
-    private HashMap<String, Object> regist(@RequestBody MemBoardDto memboardDto, @RequestParam("file") MultipartFile file){
+    private HashMap<String, Object> regist(@RequestBody MemBoardDto memboardDto){
         HashMap<String, Object> mv = new HashMap<>();
 
         int resultCnt = memBoardService.regist(memboardDto);
