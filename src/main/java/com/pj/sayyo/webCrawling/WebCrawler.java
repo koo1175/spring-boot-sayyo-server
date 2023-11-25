@@ -2,7 +2,6 @@ package com.pj.sayyo.webCrawling;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +22,7 @@ public class WebCrawler {
             throw new IllegalArgumentException("검색어를 입력하세요");
         }
 
-        String url = "https://www.google.com/search?q=" + search + "&sca_esv=579408689&tbm=nws&ei=xB9GZfncK9rg2roPypWnqAU&start=10&sa=N&ved=2ahUKEwj5zv2RlKqCAxVasFYBHcrKCVUQ8tMDegQIAhAE&biw=1005&bih=945&dpr=1";
+        String url = "https://www.google.com/search?q=" + search + "&sca_esv=584847290&tbm=nws&sxsrf=AM9HkKnENX7iCeetmMUAlcfgwwd0F0-sZA:1700742380307&ei=7ERfZbywEq7c2roP3eGdmAQ&start=10&sa=N&ved=2ahUKEwi81rqLj9qCAxUurlYBHd1wB0MQ8tMDegQIAxAE&biw=707&bih=919&dpr=1";
         Document doc = Jsoup.connect(url).get();
 
         List<Map<String, String>> results = new ArrayList<>();
@@ -32,11 +31,13 @@ public class WebCrawler {
             Map<String, String> result = new HashMap<>();
             result.put("title", element.select("div.n0jPhd").text());
             result.put("content", element.select("div.GI74Re").text());
-            result.put("image", element.select("div.vJOb1e img").attr("src"));
+            result.put("image", element.select("div.vJOb1e ** img").attr("src"));
             result.put("link", element.select("a.SoaBEf").attr("href"));
             result.put("pressInfo", element.select("span.MgUUmf").text());
             result.put("time", element.select("span.OSrXXb").text());
-            System.out.println("url"+element.select("div.vJOb1e img").attr("src"));
+            System.out.println("image : "+element.select("div.vJOb1e img").attr("src"));
+            System.out.println("title : "+element.select("div.n0jPhd").text());
+            System.out.println("link : "+element.select("a.SoaBEf").attr("href"));
             results.add(result);
         });
 

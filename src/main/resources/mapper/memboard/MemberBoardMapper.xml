@@ -29,7 +29,12 @@
     <select id="findSearch" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto" resultType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
         SELECT (MEMBER_ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
         FROM MEMBOARD
-        WHERE TITLE = #{title} AND NUM = #{num}
+        WHERE TITLE = #{title}
     </select>
 
+    <update id="findSearch" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
+        UPDATE MEMBOARD
+        SET VIEWS = VIEWS+1
+        WHERE NUM = #{num}
+    </update>
 </mapper>
