@@ -11,5 +11,6 @@ public interface MemBoardMapper {
     List<MemBoardDto> findAll();
     int modify(MemBoardDto memBoardDto);
     int delete(MemBoardDto memBoardDto);
+    int updateViews(MemBoardDto memBoardDto);
     List<MemBoardDto> findSearch(MemBoardDto memBoardDto);
 }

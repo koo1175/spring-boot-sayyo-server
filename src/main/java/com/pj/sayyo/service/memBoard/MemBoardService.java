@@ -9,5 +9,6 @@ public interface MemBoardService {
     List<MemBoardDto> findAll();
     int modify(MemBoardDto memberDto);
     int delete(MemBoardDto memberDto);
+    int updateViews(MemBoardDto memBoardDto);
     List<MemBoardDto> findSearch(MemBoardDto memberDto);
 }

@@ -45,18 +45,26 @@ public class MemBoardController {
     @PostMapping("/modify")
     @ResponseBody
     public void modify(@RequestBody MemBoardDto memboardDto) {
-        int resultCnt2 = memBoardService.modify(memboardDto);
-        System.out.println("수정 완료 여부 : " + resultCnt2);
+        int resultCnt = memBoardService.modify(memboardDto);
+        System.out.println("수정 완료 여부 : " + resultCnt);
     }
 
     @PostMapping("/delete")
     @ResponseBody
     public void delete(@RequestBody MemBoardDto memboardDto) {
-        int resultCnt3 = memBoardService.delete(memboardDto);
-        System.out.println("삭제 완료 여부 : " + resultCnt3);
+        int resultCnt = memBoardService.delete(memboardDto);
+        System.out.println("삭제 완료 여부 : " + resultCnt);
 
     }
 
+    // views: 조회수 카운팅
+    @PostMapping("/updateViews")
+    @ResponseBody
+    public void updateViews(@RequestBody MemBoardDto memboardDto) {
+        int resultCnt = memBoardService.updateViews(memboardDto);
+        System.out.println("조회수 카운팅 완료 여부 : " + resultCnt);
+
+    }
     @GetMapping("/findSearch")
     @ResponseBody
     public void selectFind(@RequestBody MemBoardDto memboardDto) {

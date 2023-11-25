@@ -32,7 +32,7 @@
         WHERE TITLE = #{title}
     </select>
 
-    <update id="findSearch" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
+    <update id="updateViews" parameterType="com.pj.sayyo.model.memBoard.dto.MemBoardDto">
         UPDATE MEMBOARD
         SET VIEWS = VIEWS+1
         WHERE NUM = #{num}

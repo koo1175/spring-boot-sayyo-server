@@ -38,6 +38,11 @@ public class MemBoardServiceImpl implements MemBoardService {
     }
 
     @Override
+    public int updateViews(MemBoardDto memBoardDto) {
+        return memBoardMapper.updateViews(memBoardDto);
+    }
+
+    @Override
     public List<MemBoardDto> findSearch(MemBoardDto memBoardDto) {
         return memBoardMapper.findSearch(memBoardDto);
     }
