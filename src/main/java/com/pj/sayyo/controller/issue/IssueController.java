@@ -57,7 +57,7 @@ public class IssueController {
 
     }
 
-    @GetMapping("/findSearch")
+    @PostMapping("/findSearch")
     @ResponseBody
     public HashMap<String, Object> selectFind(@RequestBody IssueDto issueDto) {
         HashMap<String, Object> mv = new HashMap<>();
