@@ -11,6 +11,8 @@ public class FulfillmentDto {
     private int tryNum;
     // 지역 발전도
     private int regionDev;
+    // 이행률
+    private int fulfillment;
 
     public int getPoliticianNum() {
         return politicianNum;
@@ -50,5 +52,13 @@ public class FulfillmentDto {
 
     public void setRegionDev(int regionDev) {
         this.regionDev = regionDev;
+    }
+
+    public int getFulfillment() {
+        return fulfillment;
+    }
+
+    public void setFulfillment(int fulfillment) {
+        this.fulfillment = fulfillment;
     }
 }

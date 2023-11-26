@@ -5,8 +5,8 @@
 
     <!--  ID 필드는 AUTO_INCREMENT로 AUTO COUNTING  -->
     <insert id="regist" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
-        INSERT INTO ISSUE(SEARCH, TITLE, URL, LINK, IMAGE, CONTENT)
-        VALUES (#{search}, #{title}, #{url}, #{link}, #{image}, #{content})
+        INSERT INTO ISSUE(SEARCH, TITLE, LINK, IMAGE, CONTENT)
+        VALUES (#{search}, #{title}, #{link}, #{image}, #{content})
     </insert>
 
     <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
@@ -32,7 +32,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.IssueDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
-        SELECT (SEARCH, TITLE, URL, LINK, IMAGE, CONTENT)
+        SELECT (SEARCH, TITLE, LINK, IMAGE, CONTENT)
         FROM ISSUE
         WHERE SEARCH = #{search}
     </select>

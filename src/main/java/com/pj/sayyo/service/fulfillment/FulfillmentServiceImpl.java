@@ -42,4 +42,9 @@ public class FulfillmentServiceImpl implements FulfillmentService{
     public BigDecimal returnF(FulfillmentDto fulfillmentDto){
         return fulfillmentMapper.returnF(fulfillmentDto);
     }
+
+    @Override
+    public int setFulfillment(FulfillmentDto fulfillmentDto){
+        return fulfillmentMapper.setFulfillment(fulfillmentDto);
+    }
 }

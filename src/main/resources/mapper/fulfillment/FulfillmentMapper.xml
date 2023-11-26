@@ -40,4 +40,10 @@
         WHERE POLITICIAN_NUM = #{politicianNum}
     </select>
 
+    <update id="setFulfillment" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
+        UPDATE FULFILLMENT
+        SET FULFILLMENT = ((COMPLETE_NUM + TRY_NUM/10)/PLAN_NUM + REGION_DEV/100)
+        WHERE POLITICIAN_NUM = #{politicianNum}
+    </update>
+
 </mapper>

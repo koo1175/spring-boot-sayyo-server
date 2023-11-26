@@ -29,7 +29,6 @@
         VALUES (#{title,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{num})
     </insert>
 
-
     <select id="findVoted" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedDto">
         SELECT COUNT(*) FROM VOTED
         WHERE TITLE = #{title} AND MEMBER_ID = #{memberId}

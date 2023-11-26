@@ -3,8 +3,9 @@ package com.pj.sayyo.model.issue.dto;
 public class IssueDto {
     private String search;
     private String title;
-    private String url;
-    private int reports;
+    private String link;
+    private String image;
+    private String content;
 
     public String getSearch() {
         return search;
@@ -22,19 +23,27 @@ public class IssueDto {
         this.title = title;
     }
 
-    public String getUrl() {
-        return url;
+    public String getLink() {
+        return link;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public int getReports() {
-        return reports;
+    public String getImage() {
+        return image;
     }
 
-    public void setReports(int reports) {
-        this.reports = reports;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

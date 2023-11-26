@@ -30,7 +30,8 @@ public class FulfillmentController {
         int resultCnt = fulfillmentService.regist(fulfullmentDto);
         mv.put("result", resultCnt);
         System.out.println(resultCnt);
-
+        // 초기 등록 시 이행률 갱신
+        fulfillmentService.setFulfillment(fulfullmentDto);
         return mv;
     }
 
@@ -49,6 +50,8 @@ public class FulfillmentController {
     public void modify(@RequestBody FulfillmentDto fulfillmentDto) {
         int resultCnt2 = fulfillmentService.modify(fulfillmentDto);
         System.out.println("수정 완료 여부 : " + resultCnt2);
+        // 이행률 갱신
+        fulfillmentService.setFulfillment(fulfillmentDto);
     }
 
     @PostMapping("/delete")
