@@ -63,6 +63,8 @@ public class IssueController {
         HashMap<String, Object> mv = new HashMap<>();
         List<IssueDto> list = issueService.findSearch(issueDto);
 
+        System.out.println("기사 조회 요청 : " + issueDto.getSearch());
+
         mv.put("list", list);
         return mv;
     }

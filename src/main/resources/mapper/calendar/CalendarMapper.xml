@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.sayyo.model.calendar.mapper.CalendarMapper">
+    <select id="getAllEvents" resultType="com.pj.sayyo.model.calendar.dto.CalendarDto">
+        SELECT * FROM CALENDAR
+    </select>
+
+    <insert id="insert">
+        INSERT INTO CALENDAR (TITLE, START, END) VALUES (#{title}, #{start}, #{end})
+    </insert>
+</mapper>
