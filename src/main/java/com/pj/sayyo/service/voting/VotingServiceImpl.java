@@ -65,4 +65,16 @@ public class VotingServiceImpl implements VotingService{
     public int getAge(VotedataDto votedataDto){
         return votingMapper.getAge(votedataDto);
     }
+    @Override
+    public int getRegionWho(VotedataDto votedataDto){
+        return votingMapper.getRegionWho(votedataDto);
+    }
+    @Override
+    public int getGenderWho(VotedataDto votedataDto){
+        return votingMapper.getGenderWho(votedataDto);
+    }
+    @Override
+    public int getAgeWho(VotedataDto votedataDto){
+        return votingMapper.getAgeWho(votedataDto);
+    }
 }

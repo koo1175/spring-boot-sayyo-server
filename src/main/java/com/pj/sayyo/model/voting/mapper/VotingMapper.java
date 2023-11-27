@@ -22,5 +22,8 @@ public interface VotingMapper {
     int getGender(VotedataDto votedataDto);
     int getRegion(VotedataDto votedataDto);
     int getAge(VotedataDto votedataDto);
+    int getGenderWho(VotedataDto votedataDto);
+    int getRegionWho(VotedataDto votedataDto);
+    int getAgeWho(VotedataDto votedataDto);
 
 }

@@ -58,17 +58,27 @@
         SELECT COUNT(*) FROM VOTEDATA
         WHERE GENDER = #{gender}
     </select>
-
+    <select id="getGenderWho" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE GENDER = #{gender} AND NUM = #{num}
+    </select>
     <!--  지역  -->
     <select id="getRegion" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
         SELECT COUNT(*) FROM VOTEDATA
         WHERE REGION = #{region}
     </select>
-
+    <select id="getRegionWho" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE REGION = #{region} AND NUM = #{num}
+    </select>
     <!--  나이  -->
     <select id="getAge" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
         SELECT COUNT(*) FROM VOTEDATA
         WHERE AGE = #{age}
+    </select>
+    <select id="getAgeWho" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE AGE = #{age} AND NUM = #{num}
     </select>
 
 </mapper>

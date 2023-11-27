@@ -73,59 +73,65 @@ public class VotingController {
     @ResponseBody
     private Integer voted(@RequestBody VotedDto votedDto){
         HashMap<String, Object> mv = new HashMap<>();
+        int exist = votingService.findVoted(votedDto);
+        int resultCnt = 0;
+        System.out.println("이미 존재하는지 안하는지 ?"+exist);
+        // 존재 안할 때 0 반환 -> 등록
+        if(exist==0){
+            resultCnt = votingService.voted(votedDto);
 
-        int resultCnt = votingService.voted(votedDto);
+            // 임의로 member를 생성해둔뒤
+            MemberDto mem = new MemberDto();
+            mem.setId(votedDto.getMemberId());
+            // memberDto에 if를 넣어두고 해당 id의 회원 정보를 가져온다
+            mem = memberService.findSearchById(mem);
+            System.out.println("투표 시 가져와진 멤버의 정보: "+mem.toString());
 
-        // 임의로 member를 생성해둔뒤
-        MemberDto mem = new MemberDto();
-        mem.setId(votedDto.getMemberId());
-        // memberDto에 if를 넣어두고 해당 id의 회원 정보를 가져온다
-        mem = memberService.findSearchById(mem);
-        System.out.println("투표 시 가져와진 멤버의 정보: "+mem.toString());
+            VotedataDto data = new VotedataDto();
 
-        VotedataDto data = new VotedataDto();
+            // 주민등록번호
+            String registNum = mem.getRegistNum();
 
-        // 주민등록번호
-        String registNum = mem.getRegistNum();
+            // 몇십대인지
+            int thisYear = LocalDate.now().getYear();
+            int birthYear = Integer.parseInt(registNum.substring(0,2));
+            int genderDigit = Character.getNumericValue(registNum.charAt(6));
+            System.out.println("회원의 나이 : "+(thisYear - (2000 + birthYear) + 1));
+            if(genderDigit < 3){
+                data.setAge((thisYear - (1900 + birthYear) + 1) / 10 * 10);
+            }else{
+                System.out.println("회원의 연령대 : "+(thisYear - (2000 + birthYear) + 1) / 10 * 10);
+                data.setAge((thisYear - (2000 + birthYear) + 1) / 10 * 10);
+            }
 
-        // 몇십대인지
-        int thisYear = LocalDate.now().getYear();
-        int birthYear = Integer.parseInt(registNum.substring(0,2));
-        int genderDigit = Character.getNumericValue(registNum.charAt(6));
-        System.out.println("회원의 나이 : "+(thisYear - (2000 + birthYear) + 1));
-        if(genderDigit < 3){
-            data.setAge((thisYear - (1900 + birthYear) + 1) / 10 * 10);
-        }else{
-            System.out.println("회원의 연령대 : "+(thisYear - (2000 + birthYear) + 1) / 10 * 10);
-            data.setAge((thisYear - (2000 + birthYear) + 1) / 10 * 10);
-        }
+            if(genderDigit % 2 == 0){
+                data.setGender("여자");
+            }else{
+                data.setGender("남자");
+            }
+            Pattern pattern = Pattern.compile("(\\S+)시");
+            Matcher matcher = pattern.matcher(mem.getAddress());
+            if(matcher.find()){
+                data.setRegion(matcher.group(1));
+            }else{
+                data.setRegion("알 수 없음");
+            }
 
-        if(genderDigit % 2 == 0){
-            data.setGender("여자");
-        }else{
-            data.setGender("남자");
-        }
-        Pattern pattern = Pattern.compile("(\\S+)시");
-        Matcher matcher = pattern.matcher(mem.getAddress());
-        if(matcher.find()){
-            data.setRegion(matcher.group(1));
-        }else{
-            data.setRegion("알 수 없음");
-        }
-        
-        data.setMemberId(votedDto.getMemberId());
-        data.setTitle(votedDto.getTitle());
-        data.setNum(votedDto.getNum());
-        votingService.votedata(data);
-        mv.put("voted", resultCnt);
-        System.out.println(resultCnt);
+            // 투표자들의 정보 수집
+            data.setMemberId(votedDto.getMemberId());
+            data.setTitle(votedDto.getTitle());
+            data.setNum(votedDto.getNum());
+            votingService.votedata(data);
 
-        if(resultCnt == 1){
+            // 후보자들의 점수 갱신
             VotingDto votingDto = new VotingDto();
             votingDto.setTitle(votedDto.getTitle());
             votingDto.setNum(votedDto.getNum());
             votingService.voteScore(votingDto);
+        }else{
+
         }
+
         return resultCnt;
     }
 
@@ -155,10 +161,17 @@ public class VotingController {
 
         HashMap<String, Object> mv = new HashMap<>();
         String[] genders = {"남자", "여자"}; // 성별 배열
+        int result2 = 0;
+
         for (String gender : genders) {
             VotedataDto votedataDto = new VotedataDto();
             votedataDto.setGender(gender); // 성별 설정
-
+            int[] nums = {1, 2, 3, 4};
+            for(int num: nums){
+                votedataDto.setNum(num);
+                result2 = votingService.getGenderWho(votedataDto);
+                mv.put(gender+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+            }
             int result = votingService.getGender(votedataDto);
             System.out.println(gender + "의 getGender 요청 결과 : " + result);
             mv.put(gender, result); // 성별을 키로, 결과를 값으로 저장
@@ -172,10 +185,17 @@ public class VotingController {
 
         HashMap<String, Object> mv = new HashMap<>();
         int[] ages = {10, 20, 30, 40, 50, 60, 70, 80}; // 성별 배열
+        int result2 = 0;
+
         for (int age : ages) {
             VotedataDto votedataDto = new VotedataDto();
             votedataDto.setAge(age); // 나이 설정
-
+            int[] nums = {1, 2, 3, 4};
+            for(int num: nums){
+                votedataDto.setNum(num);
+                result2 = votingService.getAgeWho(votedataDto);
+                mv.put(age+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+            }
             int result = votingService.getAge(votedataDto);
             System.out.println(age + "의 getAge 요청 결과 : " + result);
             mv.put(String.valueOf(age), result); // 나이대를 키로, 결과를 값으로 저장
@@ -190,15 +210,23 @@ public class VotingController {
         HashMap<String, Object> mv = new HashMap<>();
         String[] regions = {"서울", "수원", "의정부", "남양주", "김포", "양주", "안양", "동두천", "포천", "광주", "여주", "안성", "용인", "평택", "화성",
                             "오산", "군포", "의왕", "안산", "시흥", "부천", "성남", "과천", "광명", "하남", "구리", "고양", "파주", "이천"}; // 지역 배열
+        int result2 = 0;
         for (String region : regions) {
+
             VotedataDto votedataDto = new VotedataDto();
             votedataDto.setRegion(region); // 지역 설정
-
+            int[] nums = {1, 2, 3, 4};
+            for(int num: nums){
+                votedataDto.setNum(num);
+                result2 = votingService.getRegionWho(votedataDto);
+                mv.put(region+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+            }
             int result = votingService.getRegion(votedataDto);
             System.out.println(region + "의 getRegion 요청 결과 : " + result);
-            mv.put(region, result); // 지역을 키로, 결과를 값으로 저장
         }
         return mv;
     }
+
+
 
 }

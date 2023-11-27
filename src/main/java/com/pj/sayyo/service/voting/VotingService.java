@@ -21,4 +21,7 @@ public interface VotingService {
     int getRegion(VotedataDto votedataDto);
     int getGender(VotedataDto votedataDto);
     int getAge(VotedataDto votedataDto);
+    int getRegionWho(VotedataDto votedataDto);
+    int getGenderWho(VotedataDto votedataDto);
+    int getAgeWho(VotedataDto votedataDto);
 }
