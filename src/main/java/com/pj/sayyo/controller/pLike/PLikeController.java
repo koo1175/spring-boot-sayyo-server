@@ -17,7 +17,20 @@ public class PLikeController {
 
     @Autowired
     private PLikeService pLikeService;
-    
+
+    @PostMapping("/state")
+    @ResponseBody
+    private String state(@RequestBody PLikeDto pLikeDto){
+        if(pLikeService.findState(pLikeDto).equals('1')){
+            // 좋아요가 눌려있을 때
+            return "like";
+        }else if(pLikeService.findState(pLikeDto).equals('2')){
+            return "dislike";
+        }else{
+            return "nothing";
+        }
+    }
+
     // 좋아요 눌렀을 때
     @PostMapping("/like")
     @ResponseBody

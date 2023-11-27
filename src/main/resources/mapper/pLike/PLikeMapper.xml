@@ -4,20 +4,20 @@
 <mapper namespace="com.pj.sayyo.model.pLike.mapper.PLikeMapper">
 
     <insert id="like" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
-        INSERT INTO PLIKES(MEMBER_ID, POLITICIAN_NUM, LIKE_STATE)
-        VALUES (#{memberId}, #{politicianNum}, 1)
+        INSERT INTO PLIKES(MEMBER_ID, REGION, LIKE_STATE)
+        VALUES (#{memberId}, #{region}, 1)
     </insert>
 
     <update id="polLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         UPDATE POLITICIAN
         SET LIKES = LIKES+1
-        WHERE ID = #{politicianNum}
+        WHERE REGION = #{region}
     </update>
 
     <update id="cancelLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         UPDATE PLIKES
         SET LIKE_STATE = 0
-        WHERE MEMBER_ID = #{memberId} AND POLITICIAN_NUM = #{politicianNum}
+        WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </update>
 
 
@@ -28,7 +28,7 @@
     </update>
 
     <insert id="dislike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
-        INSERT INTO PLIKES(MEMBER_ID, POLITICIAN_NUM, LIKE_STATE)
+        INSERT INTO PLIKES(MEMBER_ID, REGION, LIKE_STATE)
         VALUES (#{memberId}, #{politicianNum}, 2)
     </insert>
 
@@ -47,19 +47,17 @@
     <select id="findLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM P_LIKES
-        WHERE MEMBER_ID = #{memberId} AND POLITICIAN_NUM = #{politicianNum}
+        WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </select>
-
 
     <select id="findState" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto" resultType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         SELECT LIKE_STATE
         FROM PLIKES
-        WHERE MEMBER_ID = #{memberId} AND POLITICIAN_NUM = #{politicianNum}
+        WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </select>
 
     <delete id="deleteLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         DELETE FROM PLIKES
-        WHERE MEMBER_ID = #{memberId} AND POLITICIAN_NUM = #{politicianNum}
+        WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </delete>
-
 </mapper>

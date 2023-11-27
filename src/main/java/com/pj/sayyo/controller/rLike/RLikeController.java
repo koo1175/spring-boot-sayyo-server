@@ -19,6 +19,14 @@ public class RLikeController {
     @Autowired
     private RLikeService rLikeService;
 
+    @PostMapping("/state")
+    @ResponseBody
+    private String state(@RequestBody RLikeDto rLikeDto) {
+        return "모르겠어";
+
+    }
+
+
     // 좋아요 눌렀을 때
     @PostMapping("/like")
     @ResponseBody

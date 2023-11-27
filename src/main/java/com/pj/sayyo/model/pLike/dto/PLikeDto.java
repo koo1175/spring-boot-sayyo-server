@@ -2,14 +2,14 @@ package com.pj.sayyo.model.pLike.dto;
 
 public class PLikeDto {
     private String memberId;
-    private String politicianNum;
+    private String region;
     private Character likeState;
 
     @Override
     public String toString() {
         return "PLikeDto{" +
                 "memberId='" + memberId + '\'' +
-                ", politicianNum='" + politicianNum + '\'' +
+                ", region='" + region + '\'' +
                 ", likeState=" + likeState +
                 '}';
     }
@@ -22,12 +22,12 @@ public class PLikeDto {
         this.memberId = memberId;
     }
 
-    public String getPoliticianNum() {
-        return politicianNum;
+    public String getRegion() {
+        return region;
     }
 
-    public void setPoliticianNum(String politicianNum) {
-        this.politicianNum = politicianNum;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public Character getLikeState() {
