@@ -1,7 +1,9 @@
 package com.pj.sayyo.controller.reply;
 
 
+import com.pj.sayyo.model.politician.dto.PoliticianDto;
 import com.pj.sayyo.model.reply.dto.ReplyDto;
+import com.pj.sayyo.service.politician.PoliticianService;
 import com.pj.sayyo.service.reply.ReplyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +26,6 @@ public class ReplyController {
     @ResponseBody
     private HashMap<String, Object> regist(@RequestBody ReplyDto replyDto){
         HashMap<String, Object> mv = new HashMap<>();
-
         int resultCnt = replyService.regist(replyDto);
         mv.put("result", resultCnt);
         System.out.println(resultCnt);
@@ -32,9 +33,9 @@ public class ReplyController {
         return mv;
     }
 
-    @GetMapping("/findAll")
+    @PostMapping("/findAll")
     @ResponseBody
-    private HashMap<String, Object> findAll(){
+    private HashMap<String, Object> findAll(@RequestBody ReplyDto replyDto){
         HashMap<String, Object> mv = new HashMap<>();
         List<ReplyDto> list = replyService.findAll();
 
@@ -57,12 +58,4 @@ public class ReplyController {
 
     }
 
-    @GetMapping("/findSearch")
-    @ResponseBody
-    public void selectFind(@RequestBody ReplyDto replyDto) {
-        HashMap<String, Object> mv = new HashMap<>();
-        List<ReplyDto> list = replyService.findSearch(replyDto);
-
-        mv.put("list", list);
-    }
 }

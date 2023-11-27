@@ -32,8 +32,4 @@ public class ReplyServiceImpl implements ReplyService{
         return replyMapper.delete(replyDto);
     }
 
-    @Override
-    public List<ReplyDto> findSearch(ReplyDto replyDto) {
-        return replyMapper.findSearch(replyDto);
-    }
 }

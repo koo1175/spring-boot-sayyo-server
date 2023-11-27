@@ -43,4 +43,5 @@
         FROM POLITICIAN
         WHERE REGION = #{region}
     </select>
+
 </mapper>

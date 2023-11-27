@@ -188,7 +188,8 @@ public class VotingController {
     private HashMap<String, Object> getRegion(){
 
         HashMap<String, Object> mv = new HashMap<>();
-        String[] regions = {"서울", "수원", "의정부", "남양주", "김포", "양주", "안양", "동두천"}; // 성별 배열
+        String[] regions = {"서울", "수원", "의정부", "남양주", "김포", "양주", "안양", "동두천", "포천", "광주", "여주", "안성", "용인", "평택", "화성",
+                            "오산", "군포", "의왕", "안산", "시흥", "부천", "성남", "과천", "광명", "하남", "구리", "고양", "파주", "이천"}; // 지역 배열
         for (String region : regions) {
             VotedataDto votedataDto = new VotedataDto();
             votedataDto.setRegion(region); // 지역 설정

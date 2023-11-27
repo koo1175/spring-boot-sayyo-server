@@ -9,6 +9,5 @@ public interface ReplyService {
     List<ReplyDto> findAll();
     int modify(ReplyDto replyDto);
     int delete(ReplyDto replyDto);
-    List<ReplyDto> findSearch(ReplyDto replyDto);
 
 }

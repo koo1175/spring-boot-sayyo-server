@@ -7,7 +7,7 @@ public class ReplyDto {
     // 고유 ID
     private int id;
     // 댓글이 어떤 정치인한테 달린건지 저장
-    private int politicianNum;
+    private String region;
     // 작성자 닉네임
     private String nickname;
     // 댓글 좋아요 수
@@ -27,12 +27,12 @@ public class ReplyDto {
         this.id = id;
     }
 
-    public int getPoliticianNum() {
-        return politicianNum;
+    public String getRegion() {
+        return region;
     }
 
-    public void setPoliticianNum(int politicianNum) {
-        this.politicianNum = politicianNum;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getNickname() {
@@ -49,6 +49,14 @@ public class ReplyDto {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
     }
 
     public String getContent() {
