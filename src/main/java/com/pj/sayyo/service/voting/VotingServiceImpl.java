@@ -1,6 +1,7 @@
 package com.pj.sayyo.service.voting;
 
 import com.pj.sayyo.model.voting.dto.VotedDto;
+import com.pj.sayyo.model.voting.dto.VotedataDto;
 import com.pj.sayyo.model.voting.dto.VotingDto;
 import com.pj.sayyo.model.voting.mapper.VotingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,23 @@ public class VotingServiceImpl implements VotingService{
     @Override
     public int findVoted(VotedDto votedDto) {
         return votingMapper.findVoted(votedDto);
+    }
+
+    // votedata
+    @Override
+    public int votedata(VotedataDto votedataDto){
+        return votingMapper.votedata(votedataDto);
+    }
+    @Override
+    public int getRegion(VotedataDto votedataDto){
+        return votingMapper.getRegion(votedataDto);
+    }
+    @Override
+    public int getGender(VotedataDto votedataDto){
+        return votingMapper.getGender(votedataDto);
+    }
+    @Override
+    public int getAge(VotedataDto votedataDto){
+        return votingMapper.getAge(votedataDto);
     }
 }

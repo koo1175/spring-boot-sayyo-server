@@ -55,7 +55,6 @@ public class MemberController {
     }
 
 
-
     @PostMapping("/login")
     @ResponseBody
     private MemberDto login(@RequestBody MemberDto memberDto){

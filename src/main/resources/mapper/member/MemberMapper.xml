@@ -49,7 +49,15 @@
         WHERE NICKNAME = #{nickname}
     </select>
 
+
+    <select id="findSearchById" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
+        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS
+        FROM MEMBER
+        WHERE ID = #{id}
+    </select>
+
     <select id="findByUserId" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
         SELECT * FROM MEMBER WHERE ID = #{id}
     </select>
+
 </mapper>

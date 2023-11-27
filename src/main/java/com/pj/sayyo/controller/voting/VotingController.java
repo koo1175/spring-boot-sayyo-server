@@ -1,14 +1,22 @@
 package com.pj.sayyo.controller.voting;
 
+import com.pj.sayyo.model.member.dto.MemberDto;
 import com.pj.sayyo.model.voting.dto.VotedDto;
+import com.pj.sayyo.model.voting.dto.VotedataDto;
 import com.pj.sayyo.model.voting.dto.VotingDto;
+import com.pj.sayyo.service.member.MemberService;
 import com.pj.sayyo.service.voting.VotingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/voting")
@@ -17,6 +25,8 @@ public class VotingController {
     @Autowired
     private VotingService votingService;
 
+    @Autowired
+    private MemberService memberService;
 
     @PostMapping("/regist")
     @ResponseBody
@@ -65,6 +75,48 @@ public class VotingController {
         HashMap<String, Object> mv = new HashMap<>();
 
         int resultCnt = votingService.voted(votedDto);
+
+        // 임의로 member를 생성해둔뒤
+        MemberDto mem = new MemberDto();
+        mem.setId(votedDto.getMemberId());
+        // memberDto에 if를 넣어두고 해당 id의 회원 정보를 가져온다
+        mem = memberService.findSearchById(mem);
+        System.out.println("투표 시 가져와진 멤버의 정보: "+mem.toString());
+
+        VotedataDto data = new VotedataDto();
+
+        // 주민등록번호
+        String registNum = mem.getRegistNum();
+
+        // 몇십대인지
+        int thisYear = LocalDate.now().getYear();
+        int birthYear = Integer.parseInt(registNum.substring(0,2));
+        int genderDigit = Character.getNumericValue(registNum.charAt(6));
+        System.out.println("회원의 나이 : "+(thisYear - (2000 + birthYear) + 1));
+        if(genderDigit < 3){
+            data.setAge((thisYear - (1900 + birthYear) + 1) / 10 * 10);
+        }else{
+            System.out.println("회원의 연령대 : "+(thisYear - (2000 + birthYear) + 1) / 10 * 10);
+            data.setAge((thisYear - (2000 + birthYear) + 1) / 10 * 10);
+        }
+
+        if(genderDigit % 2 == 0){
+            data.setGender("여자");
+        }else{
+            data.setGender("남자");
+        }
+        Pattern pattern = Pattern.compile("(\\S+)시");
+        Matcher matcher = pattern.matcher(mem.getAddress());
+        if(matcher.find()){
+            data.setRegion(matcher.group(1));
+        }else{
+            data.setRegion("알 수 없음");
+        }
+        
+        data.setMemberId(votedDto.getMemberId());
+        data.setTitle(votedDto.getTitle());
+        data.setNum(votedDto.getNum());
+        votingService.votedata(data);
         mv.put("voted", resultCnt);
         System.out.println(resultCnt);
 
@@ -96,4 +148,56 @@ public class VotingController {
         mv.put("candidates", candidate);
         return mv;
     }
+
+    @GetMapping("/getGender")
+    @ResponseBody
+    private HashMap<String, Object> getGender(){
+
+        HashMap<String, Object> mv = new HashMap<>();
+        String[] genders = {"남자", "여자"}; // 성별 배열
+        for (String gender : genders) {
+            VotedataDto votedataDto = new VotedataDto();
+            votedataDto.setGender(gender); // 성별 설정
+
+            int result = votingService.getGender(votedataDto);
+            System.out.println(gender + "의 getGender 요청 결과 : " + result);
+            mv.put(gender, result); // 성별을 키로, 결과를 값으로 저장
+        }
+        return mv;
+    }
+
+    @GetMapping("/getAge")
+    @ResponseBody
+    private HashMap<String, Object> getAge(){
+
+        HashMap<String, Object> mv = new HashMap<>();
+        int[] ages = {10, 20, 30, 40, 50, 60, 70, 80}; // 성별 배열
+        for (int age : ages) {
+            VotedataDto votedataDto = new VotedataDto();
+            votedataDto.setAge(age); // 나이 설정
+
+            int result = votingService.getAge(votedataDto);
+            System.out.println(age + "의 getAge 요청 결과 : " + result);
+            mv.put(String.valueOf(age), result); // 나이대를 키로, 결과를 값으로 저장
+        }
+        return mv;
+    }
+
+    @GetMapping("/getRegion")
+    @ResponseBody
+    private HashMap<String, Object> getRegion(){
+
+        HashMap<String, Object> mv = new HashMap<>();
+        String[] regions = {"서울", "수원", "의정부", "남양주", "김포", "양주", "안양", "동두천"}; // 성별 배열
+        for (String region : regions) {
+            VotedataDto votedataDto = new VotedataDto();
+            votedataDto.setRegion(region); // 지역 설정
+
+            int result = votingService.getRegion(votedataDto);
+            System.out.println(region + "의 getRegion 요청 결과 : " + result);
+            mv.put(region, result); // 지역을 키로, 결과를 값으로 저장
+        }
+        return mv;
+    }
+
 }

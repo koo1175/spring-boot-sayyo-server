@@ -44,4 +44,31 @@
             SET v1.PERCENTAGE = v1.SCORE / v2.TOTAL_SCORE * 100
         WHERE v1.TITLE = #{title};
     </update>
+
+    <insert id="votedata" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        INSERT INTO VOTEDATA(TITLE, MEMBER_ID, NUM, GENDER, AGE, REGION)
+        VALUES (#{title,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{num}, #{gender}, #{age}, #{region})
+    </insert>
+
+    <select id="getData" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+    </select>
+    <!--  성별  -->
+    <select id="getGender" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE GENDER = #{gender}
+    </select>
+
+    <!--  지역  -->
+    <select id="getRegion" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE REGION = #{region}
+    </select>
+
+    <!--  나이  -->
+    <select id="getAge" resultType="int" parameterType="com.pj.sayyo.model.voting.dto.VotedataDto">
+        SELECT COUNT(*) FROM VOTEDATA
+        WHERE AGE = #{age}
+    </select>
+
 </mapper>
