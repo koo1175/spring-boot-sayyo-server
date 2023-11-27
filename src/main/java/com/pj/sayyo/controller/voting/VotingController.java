@@ -174,7 +174,6 @@ public class VotingController {
             }
             int result = votingService.getGender(votedataDto);
             System.out.println(gender + "의 getGender 요청 결과 : " + result);
-            mv.put(gender, result); // 성별을 키로, 결과를 값으로 저장
         }
         return mv;
     }
