@@ -170,7 +170,7 @@ public class VotingController {
             for(int num: nums){
                 votedataDto.setNum(num);
                 result2 = votingService.getGenderWho(votedataDto);
-                mv.put(gender+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+                mv.put(gender+","+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
             }
             int result = votingService.getGender(votedataDto);
             System.out.println(gender + "의 getGender 요청 결과 : " + result);
@@ -194,7 +194,7 @@ public class VotingController {
             for(int num: nums){
                 votedataDto.setNum(num);
                 result2 = votingService.getAgeWho(votedataDto);
-                mv.put(age+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+                mv.put(age+","+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
             }
             int result = votingService.getAge(votedataDto);
             System.out.println(age + "의 getAge 요청 결과 : " + result);
@@ -219,7 +219,7 @@ public class VotingController {
             for(int num: nums){
                 votedataDto.setNum(num);
                 result2 = votingService.getRegionWho(votedataDto);
-                mv.put(region+" "+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
+                mv.put(region+","+num, result2); // 지역 후보번호 를 키로, 결과를 값으로 저장
             }
             int result = votingService.getRegion(votedataDto);
             System.out.println(region + "의 getRegion 요청 결과 : " + result);
