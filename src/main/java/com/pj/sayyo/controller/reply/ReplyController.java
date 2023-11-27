@@ -37,7 +37,7 @@ public class ReplyController {
     @ResponseBody
     private HashMap<String, Object> findAll(@RequestBody ReplyDto replyDto){
         HashMap<String, Object> mv = new HashMap<>();
-        List<ReplyDto> list = replyService.findAll();
+        List<ReplyDto> list = replyService.findAll(replyDto);
 
         mv.put("list", list);
         return mv;

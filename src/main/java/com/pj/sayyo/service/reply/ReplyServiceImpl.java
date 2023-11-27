@@ -18,8 +18,8 @@ public class ReplyServiceImpl implements ReplyService{
     }
 
     @Override
-    public List<ReplyDto> findAll() {
-        return replyMapper.findAll();
+    public List<ReplyDto> findAll(ReplyDto replyDto) {
+        return replyMapper.findAll(replyDto);
     }
 
     @Override

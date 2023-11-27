@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface ReplyMapper {
     int regist(ReplyDto replyDto);
-    List<ReplyDto> findAll();
+    List<ReplyDto> findAll(ReplyDto replyDto);
     int modify(ReplyDto replyDto);
     int delete(ReplyDto replyDto);
 
