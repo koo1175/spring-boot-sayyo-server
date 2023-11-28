@@ -11,6 +11,8 @@ public class IssueDto {
 
     private String wrotetime;
 
+    private String newsLogo;
+
     public String getSearch() {
         return search;
     }
@@ -65,5 +67,13 @@ public class IssueDto {
 
     public void setWrotetime(String wrotetime) {
         this.wrotetime = wrotetime;
+    }
+
+    public String getNewsLogo() {
+        return newsLogo;
+    }
+
+    public void setNewsLogo(String newsLogo) {
+        this.newsLogo = newsLogo;
     }
 }
