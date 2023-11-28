@@ -22,7 +22,7 @@
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        DELETE FULFILLMENT
+        DELETE FROM FULFILLMENT
         WHERE POLITICIAN_NUM = #{politicianNum}
     </delete>
 

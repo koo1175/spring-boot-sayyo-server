@@ -39,7 +39,7 @@
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.member.dto.MemberDto">
-        DELETE MEMBER
+        DELETE FROM MEMBER
         WHERE ID = #{id}
     </delete>
 

@@ -21,7 +21,7 @@
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.question.dto.QuestionDto">
-        DELETE QUESTION
+        DELETE FROM QUESTION
         WHERE ID = #{id}
     </delete>
 

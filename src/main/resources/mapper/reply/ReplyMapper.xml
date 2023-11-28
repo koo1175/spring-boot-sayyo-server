@@ -23,7 +23,7 @@
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.reply.dto.ReplyDto">
-        DELETE REPLY
+        DELETE FROM REPLY
         WHERE ID = #{id}
     </delete>
 
