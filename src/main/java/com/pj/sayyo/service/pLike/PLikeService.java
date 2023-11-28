@@ -19,5 +19,6 @@ public interface PLikeService {
     List<PLikeDto> findAll();
     int modify(PLikeDto pLikeDto);
     int findLike(PLikeDto pLikeDto);
+    boolean exist(PLikeDto pLikeDto);
     PLikeDto findState(PLikeDto pLikeDto);
 }

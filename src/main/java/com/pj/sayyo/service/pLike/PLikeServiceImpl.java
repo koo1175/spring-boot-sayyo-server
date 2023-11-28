@@ -68,5 +68,9 @@ public class PLikeServiceImpl implements PLikeService{
     public int deleteLike(PLikeDto pLikeDto){ return pLikeMapper.deleteLike(pLikeDto);}
 
     @Override
+    public boolean exist(PLikeDto pLikeDto){
+        return pLikeMapper.exist(pLikeDto);
+    }
+    @Override
     public PLikeDto findState(PLikeDto pLikeDto){ return pLikeMapper.findState(pLikeDto);}
 }

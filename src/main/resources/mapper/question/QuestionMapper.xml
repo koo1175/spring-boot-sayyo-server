@@ -11,8 +11,7 @@
     <select id="findAll"
             resultType="com.pj.sayyo.model.question.dto.QuestionDto">
         SELECT ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
-        FROM
-            QUESTION
+        FROM QUESTION
     </select>
 
     <update id="modify" parameterType="com.pj.sayyo.model.question.dto.QuestionDto">

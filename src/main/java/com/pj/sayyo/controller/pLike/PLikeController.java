@@ -21,14 +21,20 @@ public class PLikeController {
     @PostMapping("/state")
     @ResponseBody
     private String state(@RequestBody PLikeDto pLikeDto){
-        if(pLikeService.findState(pLikeDto).equals('1')){
-            // 좋아요가 눌려있을 때
-            return "like";
-        }else if(pLikeService.findState(pLikeDto).equals('2')){
-            return "dislike";
+        // 좋아요 기록이 있나?
+        if(pLikeService.exist(pLikeDto)){
+            if(pLikeService.findState(pLikeDto).equals('1')){
+                // 좋아요가 눌려있을 때
+                return "like";
+            }else if(pLikeService.findState(pLikeDto).equals('2')){
+                return "dislike";
+            }else{
+                return "nothing";
+            }
         }else{
             return "nothing";
         }
+
     }
 
     // 좋아요 눌렀을 때

@@ -50,6 +50,12 @@
         WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </select>
 
+    <select id="exist" resultType="boolean" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
+        SELECT COUNT(*)
+        FROM PLIKES
+        WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
+    </select>
+
     <select id="findState" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto" resultType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         SELECT LIKE_STATE
         FROM PLIKES
