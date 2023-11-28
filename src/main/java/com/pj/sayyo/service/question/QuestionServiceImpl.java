@@ -36,4 +36,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<QuestionDto> findSearch(QuestionDto questionDto) {
         return questionMapper.findSearch(questionDto);
     }
+
+    @Override
+    public boolean isCorrect(QuestionDto questionDto){
+        return questionMapper.isCorrect(questionDto);
+    }
 }

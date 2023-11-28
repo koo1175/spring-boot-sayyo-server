@@ -65,4 +65,17 @@ public class QuestionController {
 
         mv.put("list", list);
     }
+
+    @GetMapping("/isCorrect")
+    @ResponseBody
+    public boolean isCorrect(@RequestBody QuestionDto questionDto) {
+        // 유저한테는 질문과 정답을 요청받은 뒤 isCorrect로 확인하도록 함
+        // 정답일 경우 true 반환
+        // 오답일 경우 false 반환
+
+        boolean resultCnt = questionService.isCorrect(questionDto);
+        System.out.println("정답 일 때 true : " + resultCnt);
+
+        return resultCnt;
+    }
 }

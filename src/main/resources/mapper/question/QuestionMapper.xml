@@ -4,13 +4,13 @@
 <mapper namespace="com.pj.sayyo.model.question.mapper.QuestionMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.question.dto.QuestionDto">
-        INSERT INTO QUESTION(ID, CONTENT)
-        VALUES (#{id}, #{content})
+        INSERT INTO QUESTION(ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4)
+        VALUES (#{id}, #{content}, #{answer}, #{option1}, #{option2}, #{option3}, #{option4})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.question.dto.QuestionDto">
-        SELECT ID, CONTENT
+        SELECT ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
         FROM
             QUESTION
     </select>
@@ -27,12 +27,14 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.question.dto.QuestionDto" resultType="com.pj.sayyo.model.question.dto.QuestionDto">
-        SELECT ID, NAME, KOR_SCORE, ENG_SCORE, MATH_SCORE
+        SELECT ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
         FROM QUESTION
-        <if test='keyword != null and keyword != ""'>
-            WHERE ${searchCode} = #{keyword}
-        </if>
+        WHERE CONTENT LIKE CONCAT('%', #{content}, '%')
     </select>
 
-
+    <select id="isCorrect" parameterType="com.pj.sayyo.model.question.dto.QuestionDto" resultType="boolean">
+        SELECT COUNT(*)
+        FROM QUESTION
+        WHERE CONTENT = #{content} AND ANSWER = #{answer}
+    </select>
 </mapper>

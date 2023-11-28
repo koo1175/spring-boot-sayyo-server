@@ -14,5 +14,5 @@ public interface QuestionMapper {
     int modify(QuestionDto questionDto);
     int delete(QuestionDto questionDto);
     List<QuestionDto> findSearch(QuestionDto questionDto);
-
+    boolean isCorrect(QuestionDto questionDto);
 }
