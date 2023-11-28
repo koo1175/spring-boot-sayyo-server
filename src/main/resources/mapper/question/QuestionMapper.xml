@@ -16,7 +16,7 @@
 
     <update id="modify" parameterType="com.pj.sayyo.model.question.dto.QuestionDto">
         UPDATE QUESTION
-        SET CONTENT = ${content}
+        SET CONTENT = ${content}, OPTION1 = ${option1}, OPTION2 = #{option2}, OPTION3 = #{option3}, OPTION4 = ${option4}, ANSWER = ${answer}
         WHERE ID = #{id}
     </update>
 
