@@ -7,6 +7,10 @@ public class IssueDto {
     private String image;
     private String content;
 
+    private String magazine;
+
+    private String wrotetime;
+
     public String getSearch() {
         return search;
     }
@@ -45,5 +49,21 @@ public class IssueDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getMagazine() {
+        return magazine;
+    }
+
+    public void setMagazine(String magazine) {
+        this.magazine = magazine;
+    }
+
+    public String getWrotetime() {
+        return wrotetime;
+    }
+
+    public void setWrotetime(String wrotetime) {
+        this.wrotetime = wrotetime;
     }
 }
