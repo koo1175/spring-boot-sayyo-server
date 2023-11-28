@@ -24,29 +24,29 @@
     <update id="polCancelLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         UPDATE POLITICIAN
         SET LIKES = LIKES-1
-        WHERE ID = #{politicianNum}
+        WHERE REGION = #{region}
     </update>
 
     <insert id="dislike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         INSERT INTO PLIKES(MEMBER_ID, REGION, LIKE_STATE)
-        VALUES (#{memberId}, #{politicianNum}, 2)
+        VALUES (#{memberId}, #{region}, 2)
     </insert>
 
     <insert id="polDislike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         UPDATE POLITICIAN
         SET DISLIKE = DISLIKE+1
-        WHERE ID = #{politicianNum}
+        WHERE REGION = #{region}
     </insert>
 
     <update id="polCancelDislike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto">
         UPDATE POLITICIAN
         SET DISLIKE = DISLIKE-1
-        WHERE ID = #{politicianNum}
+        WHERE REGION = #{region}
     </update>
 
     <select id="findLike" parameterType="com.pj.sayyo.model.pLike.dto.PLikeDto" resultType="java.lang.Integer">
         SELECT COUNT(*)
-        FROM P_LIKES
+        FROM PLIKES
         WHERE MEMBER_ID = #{memberId} AND REGION = #{region}
     </select>
 
