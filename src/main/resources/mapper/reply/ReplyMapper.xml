@@ -6,7 +6,7 @@
     <insert id="regist" parameterType="com.pj.sayyo.model.reply.dto.ReplyDto">
         INSERT INTO REPLY(ID, REGION, NICKNAME, LIKES, DISLIKE, CONTENT, NOW_DATE)
         VALUES (#{id}, #{region},
-                #{nickname}, #{likes}, #{dislike}, #{content}, #{currentDate})
+                #{nickname}, #{likes}, #{dislike}, #{content}, #{nowDate})
     </insert>
 
     <select id="findAll"

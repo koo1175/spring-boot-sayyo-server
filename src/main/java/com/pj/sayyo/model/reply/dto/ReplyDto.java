@@ -17,7 +17,7 @@ public class ReplyDto {
     // 댓글 내용
     private String content;
     // 댓글 작성 날짜
-    private Date currentDate;
+    private Date nowDate;
 
     public int getId() {
         return id;
@@ -67,11 +67,11 @@ public class ReplyDto {
         this.content = content;
     }
 
-    public Date getCurrentDate() {
-        return currentDate;
+    public Date getNowDate() {
+        return nowDate;
     }
 
-    public void setCurrentDate(Date currentDate) {
-        this.currentDate = currentDate;
+    public void setNowDate(Date nowDate) {
+        this.nowDate = nowDate;
     }
 }
