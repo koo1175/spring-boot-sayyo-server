@@ -7,6 +7,6 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO Calendar (title, start, end) VALUES (#{title}, #{start}, #{end})
+        INSERT INTO CALENDAR (title, start, end) VALUES (#{title}, #{start}, #{end})
     </insert>
 </mapper>

@@ -15,6 +15,16 @@ public class CalendarDto {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "CalendarDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
+
     public String getTitle() {
         return title;
     }
