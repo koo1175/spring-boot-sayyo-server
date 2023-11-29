@@ -14,7 +14,7 @@ public class FulfillmentDto {
     // 지역 발전도
     private int regionDev;
     // 이행률
-    private int fulfillment;
+    private double fulfillment;
 
     public String getRegion() {
         return region;
@@ -64,11 +64,11 @@ public class FulfillmentDto {
         this.regionDev = regionDev;
     }
 
-    public int getFulfillment() {
+    public double getFulfillment() {
         return fulfillment;
     }
 
-    public void setFulfillment(int fulfillment) {
+    public void setFulfillment(double fulfillment) {
         this.fulfillment = fulfillment;
     }
 }
