@@ -13,4 +13,5 @@ public interface FulfillmentService {
     List<FulfillmentDto> findSearch(FulfillmentDto fulfullmentDto);
     BigDecimal returnF(FulfillmentDto fulfillmentDto);
     int setFulfillment(FulfillmentDto fulfillmentDto);
+    List<FulfillmentDto> topFive();
 }

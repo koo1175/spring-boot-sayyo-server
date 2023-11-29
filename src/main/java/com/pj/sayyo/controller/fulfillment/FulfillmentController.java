@@ -2,7 +2,9 @@ package com.pj.sayyo.controller.fulfillment;
 
 
 import com.pj.sayyo.model.fulfillment.dto.FulfillmentDto;
+import com.pj.sayyo.model.politician.dto.PoliticianDto;
 import com.pj.sayyo.service.fulfillment.FulfillmentService;
+import com.pj.sayyo.service.politician.PoliticianService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/fulfillment")
 public class FulfillmentController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private FulfillmentService fulfillmentService;
+    @Autowired
+    private PoliticianService politicianService;
 
     @PostMapping("/regist")
     @ResponseBody
@@ -44,6 +48,7 @@ public class FulfillmentController {
         mv.put("list", list);
         return mv;
     }
+
 
     @PostMapping("/modify")
     @ResponseBody
@@ -78,4 +83,15 @@ public class FulfillmentController {
 
         return f;
     }
+
+    // topFive로 요청시 이행률 내림차순으로 5개 출력하게됨
+    @PostMapping("/topFive")
+    @ResponseBody
+    private HashMap<String, Object> topFive(){
+        HashMap<String, Object> mv = new HashMap<>();
+        List<FulfillmentDto> fullist = fulfillmentService.topFive();
+        mv.put("topFive", fullist);
+        return mv;
+    }
+
 }

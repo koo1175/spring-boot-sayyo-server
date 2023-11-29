@@ -4,46 +4,51 @@
 <mapper namespace="com.pj.sayyo.model.fulfillment.mapper.FulfillmentMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        INSERT INTO FULFILLMENT(POLITICIAN_NUM, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV)
-        VALUES (#{politicianNum}, #{planNum},
+        INSERT INTO FULFILLMENT(REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT)
+        VALUES (#{region}, #{name}, #{planNum},
                 #{completeNum}, #{tryNum}, #{regionDev})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        SELECT POLITICIAN_NUM, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV
+        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT
         FROM FULFILLMENT
     </select>
 
     <update id="modify" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
         UPDATE FULFILLMENT
         SET PLAN_NUM = #{planNum}, COMPLETE_NUM = #{completeNum}, TRY_NUM = ${tryNum}, REGION_DEV = #{regionDev}
-        WHERE POLITICIAN_NUM = #{politicianNum}
+        WHERE REGION = #{region}
     </update>
 
     <delete id="delete" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
         DELETE FROM FULFILLMENT
-        WHERE POLITICIAN_NUM = #{politicianNum}
+        WHERE REGION = #{region}
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto" resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        SELECT (POLITICIAN_NUM, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV)
+        SELECT (REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT)
         FROM FULFILLMENT
-        <if test='keyword != null and keyword != ""'>
-            WHERE ${searchCode} = #{keyword}
-        </if>
+        WHERE REGION = #{region}
     </select>
 
     <select id="returnF" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto" resultType="java.math.BigDecimal">
         SELECT ((COMPLETE_NUM + TRY_NUM/10)/PLAN_NUM + REGION_DEV/100)
         FROM FULFILLMENT
-        WHERE POLITICIAN_NUM = #{politicianNum}
+        WHERE REGION = #{region}
     </select>
 
     <update id="setFulfillment" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
         UPDATE FULFILLMENT
         SET FULFILLMENT = ((COMPLETE_NUM + TRY_NUM/10)/PLAN_NUM + REGION_DEV/100)
-        WHERE POLITICIAN_NUM = #{politicianNum}
+        WHERE REGION = #{region}
     </update>
+
+    <select id="topFive" resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
+        SELECT (REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT)
+        FROM FULFILLMENT
+        ORDER BY FULFILLMENT DESC
+        LIMIT 5
+    </select>
 
 </mapper>

@@ -1,8 +1,10 @@
 package com.pj.sayyo.model.fulfillment.dto;
 
 public class FulfillmentDto {
-    // 정치인 num
-    private int politicianNum;
+    // 정치인 담당 지역
+    private String region;
+    // 정치인 이름
+    private String name;
     // 계획 안건 수
     private int planNum;
     // 완료한 안건 수
@@ -14,12 +16,20 @@ public class FulfillmentDto {
     // 이행률
     private int fulfillment;
 
-    public int getPoliticianNum() {
-        return politicianNum;
+    public String getRegion() {
+        return region;
     }
 
-    public void setPoliticianNum(int politicianNum) {
-        this.politicianNum = politicianNum;
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPlanNum() {

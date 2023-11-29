@@ -47,4 +47,9 @@ public class FulfillmentServiceImpl implements FulfillmentService{
     public int setFulfillment(FulfillmentDto fulfillmentDto){
         return fulfillmentMapper.setFulfillment(fulfillmentDto);
     }
+
+    @Override
+    public List<FulfillmentDto> topFive() {
+        return fulfillmentMapper.topFive();
+    }
 }
