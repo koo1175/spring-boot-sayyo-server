@@ -66,13 +66,13 @@ public class FulfillmentController {
         System.out.println("삭제 완료 여부 : " + resultCnt3);
     }
 
-    @GetMapping("/findSearch")
+    @PostMapping("/findSearch")
     @ResponseBody
-    public void selectFind(@RequestBody FulfillmentDto fulfillmentDto) {
+    public HashMap<String, Object> selectFind(@RequestBody FulfillmentDto fulfillmentDto) {
         HashMap<String, Object> mv = new HashMap<>();
         List<FulfillmentDto> list = fulfillmentService.findSearch(fulfillmentDto);
-
         mv.put("list", list);
+        return mv;
     }
 
     @GetMapping("/returnF")
