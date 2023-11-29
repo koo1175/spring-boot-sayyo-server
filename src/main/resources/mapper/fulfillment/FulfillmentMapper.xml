@@ -6,7 +6,7 @@
     <insert id="regist" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
         INSERT INTO FULFILLMENT(REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT)
         VALUES (#{region}, #{name}, #{planNum},
-                #{completeNum}, #{tryNum}, #{regionDev})
+                #{completeNum}, #{tryNum}, #{regionDev}, 0)
     </insert>
 
     <select id="findAll"
@@ -33,7 +33,7 @@
     </select>
 
     <select id="returnF" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto" resultType="java.math.BigDecimal">
-        SELECT ((COMPLETE_NUM + TRY_NUM/10)/PLAN_NUM + REGION_DEV/100)
+        SELECT ((COMPLETE_NUM + TRY_NUM/10)/PLAN_NUM + REGION_DEV/100) * 100
         FROM FULFILLMENT
         WHERE REGION = #{region}
     </select>
