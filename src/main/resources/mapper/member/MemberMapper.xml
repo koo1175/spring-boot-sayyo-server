@@ -22,7 +22,7 @@
 
     <update id="kakao" parameterType="com.pj.sayyo.model.member.dto.MemberDto">
         UPDATE MEMBER
-        SET NICKNAME = #{nickname}, PHONE = #{phone}, ADDRESS = #{address}, REGIST_NUM = #{registNum}
+        SET PW = #{pw}, NAME = #{name}, NICKNAME = #{nickname}, PHONE = #{phone}, ADDRESS = #{address}
         WHERE ID = #{id}
     </update>
 
