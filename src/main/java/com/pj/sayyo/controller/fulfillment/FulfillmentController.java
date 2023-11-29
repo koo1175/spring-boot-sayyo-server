@@ -64,7 +64,6 @@ public class FulfillmentController {
     public void delete(@RequestBody FulfillmentDto fulfillmentDto) {
         int resultCnt3 = fulfillmentService.delete(fulfillmentDto);
         System.out.println("삭제 완료 여부 : " + resultCnt3);
-
     }
 
     @GetMapping("/findSearch")
