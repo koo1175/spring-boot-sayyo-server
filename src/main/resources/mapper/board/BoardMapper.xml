@@ -4,14 +4,14 @@
 <mapper namespace="com.pj.sayyo.model.board.mapper.BoardMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.board.dto.BoardDto">
-        INSERT INTO POLBOARD(ID, NUM, TITLE, CONTENT, NOW_DATE)
+        INSERT INTO POLBOARD(ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
         VALUES (#{id}, #{num},
         #{title}, #{content}, #{nowDate})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.board.dto.BoardDto">
-        SELECT ID, NUM, TITLE, CONTENT, NOW_DATE
+        SELECT ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY
         FROM POLBOARD
     </select>
 
@@ -27,7 +27,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.board.dto.BoardDto" resultType="com.pj.sayyo.model.board.dto.BoardDto">
-        SELECT (ID, NUM, TITLE, CONTENT, NOW_DATE)
+        SELECT (ID, NUM, TITLE, CONTENT, NOW_DATE, VIEWS, CATEGORY)
         FROM POLBOARD
         WHERE ID = #{id} AND NUM = #{num}
     </select>
