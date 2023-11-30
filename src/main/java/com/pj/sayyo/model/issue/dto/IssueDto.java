@@ -13,6 +13,10 @@ public class IssueDto {
 
     private String newsLogo;
 
+    private int importScore;
+
+    private int loadScore;
+
     public String getSearch() {
         return search;
     }
@@ -75,5 +79,21 @@ public class IssueDto {
 
     public void setNewsLogo(String newsLogo) {
         this.newsLogo = newsLogo;
+    }
+
+    public int getImportScore() {
+        return importScore;
+    }
+
+    public void setImportScore(int importScore) {
+        this.importScore = importScore;
+    }
+
+    public int getLoadScore() {
+        return loadScore;
+    }
+
+    public void setLoadScore(int loadScore) {
+        this.loadScore = loadScore;
     }
 }

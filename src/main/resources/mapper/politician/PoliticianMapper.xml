@@ -4,14 +4,14 @@
 <mapper namespace="com.pj.sayyo.model.politician.mapper.PoliticianMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.politician.dto.PoliticianDto">
-        INSERT INTO POLITICIAN(ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS)
+        INSERT INTO POLITICIAN(ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS, YOUTUBE, BLOG, INSTAGRAM, KAKAO, PARTY)
         VALUES (#{id}, #{name}, #{region},
                 #{likes}, #{dislike}, #{birth}, #{grade}, #{education}, #{career}, #{awards})
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.politician.dto.PoliticianDto">
-        SELECT ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS
+        SELECT ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS, YOUTUBE, BLOG, INSTAGRAM, KAKAO, PARTY
         FROM POLITICIAN
     </select>
 
@@ -39,7 +39,7 @@
     </update>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.politician.dto.PoliticianDto" resultType="com.pj.sayyo.model.politician.dto.PoliticianDto">
-        SELECT ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS
+        SELECT ID, REGION, NAME, LIKES, DISLIKE, BIRTH, GRADE, EDUCATION, CAREER, AWARDS, YOUTUBE, BLOG, INSTAGRAM, KAKAO, PARTY
         FROM POLITICIAN
         WHERE REGION = #{region}
     </select>

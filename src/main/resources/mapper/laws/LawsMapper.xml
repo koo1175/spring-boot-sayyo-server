@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pj.sayyo.model.laws.mapper.LawsMapper">
+
+    <!--  ID 필드는 AUTO_INCREMENT로 AUTO COUNTING  -->
+    <insert id="regist" parameterType="com.pj.sayyo.model.laws.dto.LawsDto">
+        INSERT INTO LAWS(NAME, LINK, TRYDATE, KINDOFLAW, PROMULGATION, CHANGES)
+        VALUES (#{name}, #{link}, #{tryDate}, #{kindOfLaw}, #{promulgation}, #{changes})
+    </insert>
+
+    <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.LawsDto">
+        SELECT NAME, LINK, TRYDATE, KINDOFLAW, PROMULGATION, CHANGES
+        FROM LAWS
+    </select>
+
+    <update id="report" parameterType="com.pj.sayyo.model.issue.dto.LawsDto">
+        UPDATE LAWS
+        SET REPORTS = REPORTS+1
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.pj.sayyo.model.issue.dto.LawsDto">
+        DELETE FROM LAWS
+        WHERE ID = #{id}
+    </delete>
+
+    <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.LawsDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
+        SELECT NAME, LINK, TRYDATE, KINDOFLAW, PROMULGATION, CHANGES
+        FROM LAWS
+        WHERE SEARCH = #{search}
+    </select>
+</mapper>

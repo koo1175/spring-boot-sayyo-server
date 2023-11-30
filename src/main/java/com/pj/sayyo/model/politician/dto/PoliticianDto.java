@@ -23,6 +23,18 @@ public class PoliticianDto {
     private String awards;
     // 경력
     private String career;
+
+    // 유튜브 주소
+    private String youtube;
+    // 블로그 주소
+    private String blog;
+    // 인스타 주소
+    private String instagram;
+    // 카카오톡 주소
+    private String kakao;
+    // 정당 이름
+    private String party;
+
     @Override
     public String toString() {
         return "PoliticianDto{" +
@@ -33,7 +45,55 @@ public class PoliticianDto {
                 ", dislike=" + dislike +
                 ", birth=" + birth +
                 ", grade='" + grade + '\'' +
+                ", education='" + education + '\'' +
+                ", awards='" + awards + '\'' +
+                ", career='" + career + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", blog='" + blog + '\'' +
+                ", instagram='" + instagram + '\'' +
+                ", kakao='" + kakao + '\'' +
+                ", party='" + party + '\'' +
                 '}';
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getBlog() {
+        return blog;
+    }
+
+    public void setBlog(String blog) {
+        this.blog = blog;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getKakao() {
+        return kakao;
+    }
+
+    public void setKakao(String kakao) {
+        this.kakao = kakao;
+    }
+
+    public String getParty() {
+        return party;
+    }
+
+    public void setParty(String party) {
+        this.party = party;
     }
 
     public int getId() {
