@@ -27,7 +27,7 @@
     <select id="findSearch" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryDto" resultType="com.pj.sayyo.model.inquiry.dto.InquiryDto">
         SELECT *
         FROM INQUIRY
-        WHERE MEMBER_ID = #{memberId}
+        WHERE NUM = #{num}
     </select>
 
 
