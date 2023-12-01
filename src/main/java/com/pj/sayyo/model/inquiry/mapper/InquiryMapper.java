@@ -14,7 +14,7 @@ public interface InquiryMapper {
     int modify(InquiryDto inquiryDto);
     int delete(InquiryDto inquiryDto);
     List<InquiryDto> findSearch(InquiryDto inquiryDto);
-
+    boolean isWriter(InquiryDto inquiryDto);
 
 
     // 문의내역 답변

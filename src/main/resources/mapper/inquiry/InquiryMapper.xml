@@ -30,6 +30,11 @@
         WHERE NUM = #{num}
     </select>
 
+    <select id="isWriter" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryDto" resultType="boolean">
+        SELECT COUNT(*)
+        FROM INQUIRY
+        WHERE NUM = #{num} AND MEMBER_ID = #{memberId}
+    </select>
 
     <!--  문의내역 답변  -->
 

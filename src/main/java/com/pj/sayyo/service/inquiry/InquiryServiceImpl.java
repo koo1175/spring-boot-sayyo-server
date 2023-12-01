@@ -41,6 +41,14 @@ public class InquiryServiceImpl implements InquiryService {
     }
 
     @Override
+    public boolean isWriter(InquiryDto inquiryDto){
+        return inquiryMapper.isWriter(inquiryDto);
+    }
+
+
+    // 문의내역 댓글
+
+    @Override
     public int registRe(InquiryReDto inquiryReDto) {
         return inquiryMapper.registRe(inquiryReDto);
     }

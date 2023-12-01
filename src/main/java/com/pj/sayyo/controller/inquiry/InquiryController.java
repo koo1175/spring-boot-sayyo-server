@@ -61,6 +61,13 @@ public class InquiryController {
         return mv;
     }
 
+    @PostMapping("/isWriter")
+    @ResponseBody
+    public boolean isWriter(@RequestBody InquiryDto inquiryDto) {
+        boolean resultCnt = inquiryService.isWriter(inquiryDto);
+        // 해당 유저가 쓴 글이 맞다면 true 전달
+        return resultCnt;
+    }
 
     @PostMapping("/registRe")
     @ResponseBody

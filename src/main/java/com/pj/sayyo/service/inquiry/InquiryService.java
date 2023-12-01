@@ -12,7 +12,9 @@ public interface InquiryService {
     int modify(InquiryDto inquiryDto);
     int delete(InquiryDto inquiryDto);
     List<InquiryDto> findSearch(InquiryDto inquiryDto);
+    boolean isWriter(InquiryDto inquiryDto);
 
+    // 문의내역 댓글
     int registRe(InquiryReDto inquiryReDto);
     List<InquiryReDto> findAllRe();
     int modifyRe(InquiryReDto inquiryReDto);
