@@ -13,8 +13,6 @@ public class BoardDto {
     private String content;
     // 글 작성 날짜
     private Date nowDate;
-    private int views;
-    private String category;
 
     public int getId() {
         return id;
@@ -54,21 +52,5 @@ public class BoardDto {
 
     public void setNowDate(Date nowDate) {
         this.nowDate = nowDate;
-    }
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }

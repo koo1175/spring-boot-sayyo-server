@@ -9,23 +9,23 @@
         VALUES (#{name}, #{link}, #{tryDate}, #{kindOfLaw}, #{promulgation}, #{changes})
     </insert>
 
-    <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.LawsDto">
+    <select id="findAll" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
         SELECT NAME, LINK, TRYDATE, KINDOFLAW, PROMULGATION, CHANGES
         FROM LAWS
     </select>
 
-    <update id="report" parameterType="com.pj.sayyo.model.issue.dto.LawsDto">
+    <update id="report" parameterType="com.pj.sayyo.model.laws.dto.LawsDto">
         UPDATE LAWS
         SET REPORTS = REPORTS+1
         WHERE ID = #{id}
     </update>
 
-    <delete id="delete" parameterType="com.pj.sayyo.model.issue.dto.LawsDto">
+    <delete id="delete" parameterType="com.pj.sayyo.model.laws.dto.LawsDto">
         DELETE FROM LAWS
         WHERE ID = #{id}
     </delete>
 
-    <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.LawsDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
+    <select id="findSearch" parameterType="com.pj.sayyo.model.laws.dto.LawsDto" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
         SELECT NAME, LINK, TRYDATE, KINDOFLAW, PROMULGATION, CHANGES
         FROM LAWS
         WHERE SEARCH = #{search}

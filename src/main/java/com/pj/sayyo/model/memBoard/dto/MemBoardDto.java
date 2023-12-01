@@ -17,6 +17,8 @@ public class MemBoardDto {
     // 카테고리
     private String category;
 
+
+
     public String getMemberId() {
         return memberId;
     }
