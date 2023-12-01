@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +16,15 @@ import java.util.List;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @PostMapping("/isAdmin")
+    @ResponseBody
+    private boolean isAdmin(@RequestBody MemberDto memberDto){
+        // id를 입력받고
+        String role = memberService.isAdmin(memberDto).getRole();
+        // 관리자일 때는 true를 반환, 아닐 땐 false를 반환하도록 함
+        return role.equals("관리자");
+    }
 
     @PostMapping("/regist")
     @ResponseBody

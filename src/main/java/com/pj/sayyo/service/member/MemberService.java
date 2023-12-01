@@ -17,4 +17,5 @@ public interface MemberService {
 
     boolean isValidId(MemberDto memberDto);
     boolean isValidRegist(MemberDto memberDto);
+    MemberDto isAdmin(MemberDto memberDto);
 }

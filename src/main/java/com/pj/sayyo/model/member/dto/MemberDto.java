@@ -17,6 +17,7 @@ public class MemberDto {
     private String registNum;
     // 신고횟수
     private int reports;
+    private String role;
 
     @Override
     public String toString() {
@@ -29,6 +30,7 @@ public class MemberDto {
                 ", address='" + address + '\'' +
                 ", registNum='" + registNum + '\'' +
                 ", reports=" + reports +
+                ", role='" + role + '\'' +
                 '}';
     }
 
@@ -94,5 +96,13 @@ public class MemberDto {
 
     public void setReports(int reports) {
         this.reports = reports;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

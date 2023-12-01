@@ -64,4 +64,9 @@ public class MemberServiceImpl implements MemberService{
     public boolean isValidRegist(MemberDto memberDto) {
         return memberMapper.isValidRegist(memberDto);
     }
+
+    @Override
+    public MemberDto isAdmin(MemberDto memberDto) {
+        return memberMapper.isAdmin(memberDto);
+    }
 }

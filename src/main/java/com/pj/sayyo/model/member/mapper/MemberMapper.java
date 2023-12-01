@@ -18,4 +18,5 @@ public interface MemberMapper {
     MemberDto findSearchById(MemberDto memberDto);
     boolean isValidId(MemberDto memberDto);
     boolean isValidRegist(MemberDto memberDto);
+    MemberDto isAdmin(MemberDto memberDto);
 }

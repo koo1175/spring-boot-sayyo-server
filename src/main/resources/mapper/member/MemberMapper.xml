@@ -67,4 +67,10 @@
     <select id="isValidRegist" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="boolean">
         SELECT COUNT(*) FROM MEMBER WHERE REGIST_NUM = #{registNum}
     </select>
+
+    <select id="isAdmin" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
+        SELECT ROLE FROM MEMBER WHERE ID = #{id}
+    </select>
+
+
 </mapper>
