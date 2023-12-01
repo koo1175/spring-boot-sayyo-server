@@ -3,12 +3,16 @@ package com.pj.sayyo.service.mail;
 import com.pj.sayyo.model.mail.dto.MailDto;
 import com.pj.sayyo.model.mail.mapper.MailMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.util.Properties;
 
 
@@ -41,20 +45,27 @@ public class MailServiceImpl implements MailService {
         return mailMapper.getAuthCode(mailDto);
     }
 
+
     public MimeMessage sendMail(MailDto mailDto) {
         createNumber();
         mailDto.setAuthCode(String.valueOf(number));
         MimeMessage message = javaMailSender.createMimeMessage();
         mailMapper.insertMail(mailDto);
         try {
-            message.setFrom(senderEmail);
-            message.setRecipients(MimeMessage.RecipientType.TO, mailDto.getEmail());
-            message.setSubject("이메일 인증");
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8"); // 인코딩을 UTF-8로 설정합니다.
+            helper.setFrom(senderEmail);
+            helper.setTo(mailDto.getEmail());
+            helper.setSubject("세상이 요지경 회원가입 이메일 인증");
+
             String body = "";
+            body += "<div style='margin:100px;'>";
+            body += "<h1> 안녕하세요</h1>";
+            body += "<h1> 통합 정치 정보 포탈 세상이 요지경 입니다.</h1>";
             body += "<h3>" + "요청하신 인증 번호입니다." + "</h3>";
             body += "<h1>" + number + "</h1>";
             body += "<h3>" + "감사합니다." + "</h3>";
-            message.setText(body,"UTF-8", "html");
+            body += "</div>";
+            helper.setText(body, true);
 
             javaMailSender.send(message);
         } catch (MessagingException e) {
@@ -63,5 +74,4 @@ public class MailServiceImpl implements MailService {
 
         return message;
     }
-
 }
