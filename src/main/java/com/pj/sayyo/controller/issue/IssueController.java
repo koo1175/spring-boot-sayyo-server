@@ -2,8 +2,6 @@ package com.pj.sayyo.controller.issue;
 
 import com.pj.sayyo.model.issue.dto.IssueDto;
 import com.pj.sayyo.service.issue.IssueService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/issue")
 public class IssueController {
-    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private IssueService issueService;
