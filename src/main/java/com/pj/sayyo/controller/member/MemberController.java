@@ -3,35 +3,43 @@ package com.pj.sayyo.controller.member;
 
 import com.pj.sayyo.model.member.dto.MemberDto;
 import com.pj.sayyo.service.member.MemberService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.List;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-    Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private MemberService memberService;
 
     @PostMapping("/regist")
     @ResponseBody
-    private HashMap<String, Object> regist(@RequestBody MemberDto memberDto){
-        HashMap<String, Object> mv = new HashMap<>();
-
-        int resultCnt = memberService.regist(memberDto);
-        mv.put("result", resultCnt);
-        System.out.println(resultCnt);
-
-        return mv;
+    private int regist(@RequestBody MemberDto memberDto){
+        int resultCnt = 0;
+        // 겹치는 아이디, 주민등록번호 없을 경우 가입 가능하도록
+        if(memberService.isValidId(memberDto) && memberService.isValidRegist(memberDto)){
+            resultCnt = memberService.regist(memberDto);
+            System.out.println(resultCnt);
+        }
+        return resultCnt;
     }
+
+    @PostMapping("/isValidId")
+    @ResponseBody
+    private boolean isValidId(@RequestBody MemberDto memberDto){
+        return memberService.isValidId(memberDto);
+    }
+
+    @PostMapping("/isValidRegist")
+    @ResponseBody
+    private boolean isValidRegist(@RequestBody MemberDto memberDto){
+        return memberService.isValidRegist(memberDto);
+    }
+
 
     @PostMapping("/kakao")
     @ResponseBody

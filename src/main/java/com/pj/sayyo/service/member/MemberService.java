@@ -14,4 +14,7 @@ public interface MemberService {
     int delete(MemberDto memberDto);
     MemberDto findSearch(MemberDto memberDto);
     MemberDto findSearchById(MemberDto memberDto);
+
+    boolean isValidId(MemberDto memberDto);
+    boolean isValidRegist(MemberDto memberDto);
 }

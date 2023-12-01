@@ -60,4 +60,11 @@
         SELECT * FROM MEMBER WHERE ID = #{id}
     </select>
 
+    <select id="isValidId" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="boolean">
+        SELECT COUNT(*) FROM MEMBER WHERE ID = #{id}
+    </select>
+
+    <select id="isValidRegist" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="boolean">
+        SELECT COUNT(*) FROM MEMBER WHERE REGIST_NUM = #{registNum}
+    </select>
 </mapper>

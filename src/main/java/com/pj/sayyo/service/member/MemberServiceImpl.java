@@ -54,4 +54,14 @@ public class MemberServiceImpl implements MemberService{
     public MemberDto findSearchById(MemberDto memberDto) {
         return memberMapper.findSearchById(memberDto);
     }
+
+    @Override
+    public boolean isValidId(MemberDto memberDto) {
+        return memberMapper.isValidId(memberDto);
+    }
+
+    @Override
+    public boolean isValidRegist(MemberDto memberDto) {
+        return memberMapper.isValidRegist(memberDto);
+    }
 }
