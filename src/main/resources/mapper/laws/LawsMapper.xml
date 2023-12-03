@@ -14,6 +14,18 @@
         FROM LAWS
     </select>
 
+    <select id="findNew" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
+        SELECT *
+        FROM LAWS
+        WHERE KIND = '최신'
+    </select>
+
+    <select id="findPol" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
+        SELECT *
+        FROM LAWS
+        WHERE KIND = '선거'
+    </select>
+
     <update id="report" parameterType="com.pj.sayyo.model.laws.dto.LawsDto">
         UPDATE LAWS
         SET REPORTS = REPORTS+1

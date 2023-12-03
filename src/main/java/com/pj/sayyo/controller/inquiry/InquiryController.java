@@ -78,8 +78,12 @@ public class InquiryController {
     @ResponseBody
     private HashMap<String, Object> regist(@RequestBody InquiryReDto inquiryReDto){
         HashMap<String, Object> mv = new HashMap<>();
-
+        InquiryDto i = new InquiryDto();
+        i.setNum(inquiryReDto.getNum());
         int resultCnt = inquiryService.registRe(inquiryReDto);
+        // 답변 등록과 동시에 답변 등록 됐다고 갱신
+        inquiryService.completeA(i);
+        
         mv.put("result", resultCnt);
         System.out.println(resultCnt);
         return mv;

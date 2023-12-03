@@ -12,6 +12,7 @@ public interface InquiryMapper {
     int regist(InquiryDto inquiryDto);
     List<InquiryDto> findAll();
     int modify(InquiryDto inquiryDto);
+    int completeA(InquiryDto inquiryDto);
     int delete(InquiryDto inquiryDto);
     List<InquiryDto> findSearch(InquiryDto inquiryDto);
     boolean isWriter(InquiryDto inquiryDto);

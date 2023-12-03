@@ -9,6 +9,8 @@ import java.util.List;
 public interface LawsMapper {
     int regist(LawsDto lawsDto);
     List<LawsDto> findAll();
+    List<LawsDto> findNew();
+    List<LawsDto> findPol();
     int modify(LawsDto lawsDto);
     int delete(LawsDto lawsDto);
     List<LawsDto> findSearch(LawsDto lawsDto);

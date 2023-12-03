@@ -19,6 +19,12 @@
         WHERE NUM = #{num}
     </update>
 
+    <update id="completeA" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryDto">
+        UPDATE INQUIRY
+        SET COMPLETE = 1
+        WHERE NUM = #{num}
+    </update>
+
     <delete id="delete" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryDto">
         DELETE FROM INQUIRY
         WHERE NUM = #{num}

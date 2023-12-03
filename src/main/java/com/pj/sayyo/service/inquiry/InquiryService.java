@@ -13,6 +13,7 @@ public interface InquiryService {
     int delete(InquiryDto inquiryDto);
     List<InquiryDto> findSearch(InquiryDto inquiryDto);
     boolean isWriter(InquiryDto inquiryDto);
+    int completeA(InquiryDto inquiryDto);
 
     // 문의내역 댓글
     int registRe(InquiryReDto inquiryReDto);

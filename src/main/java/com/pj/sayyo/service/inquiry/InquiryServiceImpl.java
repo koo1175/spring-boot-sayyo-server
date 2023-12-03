@@ -31,6 +31,11 @@ public class InquiryServiceImpl implements InquiryService {
     }
 
     @Override
+    public int completeA(InquiryDto inquiryDto) {
+        return inquiryMapper.completeA(inquiryDto);
+    }
+
+    @Override
     public int delete(InquiryDto inquiryDto) {
         return inquiryMapper.delete(inquiryDto);
     }

@@ -28,4 +28,25 @@ public class LawsController {
         mv.put("laws", list);
         return mv;
     }
+
+    @GetMapping("/findNew")
+    @ResponseBody
+    private HashMap<String, Object> findNew(){
+        HashMap<String, Object> mv = new HashMap<>();
+        List<LawsDto> list = lawsService.findAll();
+
+        mv.put("laws", list);
+        return mv;
+    }
+
+
+    @GetMapping("/findPol")
+    @ResponseBody
+    private HashMap<String, Object> findPol(){
+        HashMap<String, Object> mv = new HashMap<>();
+        List<LawsDto> list = lawsService.findAll();
+
+        mv.put("laws", list);
+        return mv;
+    }
 }

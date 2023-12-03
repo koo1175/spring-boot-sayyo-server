@@ -7,6 +7,10 @@ public class LawsDto {
     private String kindOfLaw;
     private String promulgation;
     private String changes;
+    private String ho;
+    private String depart;
+    private String kind;
+
 
     public String getName() {
         return name;
@@ -54,5 +58,29 @@ public class LawsDto {
 
     public void setChanges(String changes) {
         this.changes = changes;
+    }
+
+    public String getHo() {
+        return ho;
+    }
+
+    public void setHo(String ho) {
+        this.ho = ho;
+    }
+
+    public String getDepart() {
+        return depart;
+    }
+
+    public void setDepart(String depart) {
+        this.depart = depart;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
     }
 }
