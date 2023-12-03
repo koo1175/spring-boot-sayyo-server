@@ -2,7 +2,9 @@ package com.pj.sayyo.controller.inquiry;
 
 import com.pj.sayyo.model.inquiry.dto.InquiryDto;
 import com.pj.sayyo.model.inquiry.dto.InquiryReDto;
+import com.pj.sayyo.model.member.dto.MemberDto;
 import com.pj.sayyo.service.inquiry.InquiryService;
+import com.pj.sayyo.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,9 @@ public class InquiryController {
 
     @Autowired
     private InquiryService inquiryService;
+
+    @Autowired
+    private MemberService memberService;
 
     @PostMapping("/regist")
     @ResponseBody
@@ -64,9 +69,9 @@ public class InquiryController {
     @PostMapping("/isWriter")
     @ResponseBody
     public boolean isWriter(@RequestBody InquiryDto inquiryDto) {
-        boolean resultCnt = inquiryService.isWriter(inquiryDto);
-        // 해당 유저가 쓴 글이 맞다면 true 전달
-        return resultCnt;
+
+        // 해당 유저가 쓴 글이 맞다면 true
+        return inquiryService.isWriter(inquiryDto);
     }
 
     @PostMapping("/registRe")

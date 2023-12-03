@@ -15,7 +15,7 @@
 
     <update id="modify" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryDto">
         UPDATE INQUIRY
-        SET TITLE = #{title}
+        SET TITLE = #{title}, CONTENT=#{content}
         WHERE NUM = #{num}
     </update>
 
@@ -49,7 +49,7 @@
 
     <update id="modifyRe" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryReDto">
         UPDATE INQUIRY_RE
-        SET TITLE = #{title}
+        SET TITLE = #{title}, CONTENT={content}
         WHERE NUM = #{num}
     </update>
 
