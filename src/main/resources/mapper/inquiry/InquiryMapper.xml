@@ -39,8 +39,8 @@
     <!--  문의내역 답변  -->
 
     <insert id="registRe" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryReDto">
-        INSERT INTO INQUIRY_RE(TITLE, CONTENT)
-        VALUES (#{title}, #{content})
+        INSERT INTO INQUIRY_RE(NUM, TITLE, CONTENT)
+        VALUES (#{num}, #{title}, #{content})
     </insert>
 
     <select id="findAllRe" resultType="com.pj.sayyo.model.inquiry.dto.InquiryReDto">
@@ -61,6 +61,6 @@
     <select id="findSearchRe" parameterType="com.pj.sayyo.model.inquiry.dto.InquiryReDto" resultType="com.pj.sayyo.model.inquiry.dto.InquiryReDto">
         SELECT *
         FROM INQUIRY_RE
-        WHERE MEMBER_ID = #{memberId}
+        WHERE NUM = #{num}
     </select>
 </mapper>
