@@ -29,6 +29,7 @@ public class InquiryController {
 
         int resultCnt = inquiryService.regist(inquiryDto);
         mv.put("result", resultCnt);
+
         System.out.println(resultCnt);
         return mv;
     }

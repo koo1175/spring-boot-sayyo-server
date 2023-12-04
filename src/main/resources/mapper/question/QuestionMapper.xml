@@ -10,7 +10,7 @@
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.question.dto.QuestionDto">
-        SELECT ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
+        SELECT ID, CONTENT, COMMENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
         FROM QUESTION
     </select>
 
@@ -26,7 +26,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.question.dto.QuestionDto" resultType="com.pj.sayyo.model.question.dto.QuestionDto">
-        SELECT ID, CONTENT, ANSWER, OPTION1, OPTION2, OPTION3, OPTION4
+        SELECT ID, CONTENT, ANSWER, COMMENT, OPTION1, OPTION2, OPTION3, OPTION4
         FROM QUESTION
         WHERE CONTENT LIKE CONCAT('%', #{content}, '%')
     </select>
@@ -36,4 +36,5 @@
         FROM QUESTION
         WHERE CONTENT = #{content} AND ANSWER = #{answer}
     </select>
+
 </mapper>

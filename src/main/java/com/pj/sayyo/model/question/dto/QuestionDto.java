@@ -6,6 +6,8 @@ public class QuestionDto {
 
     // 정답
     private String answer;
+    // 해설
+    private String comment;
 
     // 선택지
     private String option1;
@@ -67,5 +69,13 @@ public class QuestionDto {
 
     public void setOption4(String option4) {
         this.option4 = option4;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
