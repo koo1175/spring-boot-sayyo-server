@@ -4,20 +4,20 @@
 <mapper namespace="com.pj.sayyo.model.fulfillment.mapper.FulfillmentMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        INSERT INTO FULFILLMENT(REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, NOT_COMPLETE_NUM, REGION_DEV, FULFILLMENT)
+        INSERT INTO FULFILLMENT(REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT)
         VALUES (#{region}, #{name}, #{planNum},
                 #{completeNum}, #{tryNum}, #{regionDev}, 0)
     </insert>
 
     <select id="findAll"
             resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, NOT_COMPLETE_NUM, REGION_DEV, FULFILLMENT
+        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT
         FROM FULFILLMENT
     </select>
 
     <update id="modify" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
         UPDATE FULFILLMENT
-        SET PLAN_NUM = #{planNum}, COMPLETE_NUM = #{completeNum}, TRY_NUM = ${tryNum}, NOT_COMPLETE_NUM = ${notCompleteNum}, REGION_DEV = #{regionDev}
+        SET PLAN_NUM = #{planNum}, COMPLETE_NUM = #{completeNum}, TRY_NUM = ${tryNum}, REGION_DEV = #{regionDev}
         WHERE REGION = #{region}
     </update>
 
@@ -27,7 +27,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto" resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, NOT_COMPLETE_NUM, REGION_DEV, FULFILLMENT
+        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT
         FROM FULFILLMENT
         WHERE REGION = #{region}
     </select>
@@ -45,7 +45,7 @@
     </update>
 
     <select id="topFive" resultType="com.pj.sayyo.model.fulfillment.dto.FulfillmentDto">
-        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, NOT_COMPLETE_NUM, REGION_DEV, FULFILLMENT
+        SELECT REGION, NAME, PLAN_NUM, COMPLETE_NUM, TRY_NUM, REGION_DEV, FULFILLMENT
         FROM FULFILLMENT
         ORDER BY FULFILLMENT DESC
         LIMIT 5
