@@ -11,10 +11,13 @@ public class FulfillmentDto {
     private int completeNum;
     // 시도한 안건 수 ( 진행중인 )
     private int tryNum;
+    // 시행못한 안건 수
+    private int notCompleteNum;
     // 지역 발전도
     private int regionDev;
     // 이행률
     private double fulfillment;
+
 
     public String getRegion() {
         return region;
@@ -54,6 +57,14 @@ public class FulfillmentDto {
 
     public void setTryNum(int tryNum) {
         this.tryNum = tryNum;
+    }
+
+    public int getNotCompleteNum() {
+        return notCompleteNum;
+    }
+
+    public void setNotCompleteNum(int notCompleteNum) {
+        this.notCompleteNum = notCompleteNum;
     }
 
     public int getRegionDev() {
