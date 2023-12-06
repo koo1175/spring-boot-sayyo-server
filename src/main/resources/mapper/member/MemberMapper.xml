@@ -4,18 +4,18 @@
 <mapper namespace="com.pj.sayyo.model.member.mapper.MemberMapper">
 
     <insert id="regist" parameterType="com.pj.sayyo.model.member.dto.MemberDto">
-        INSERT INTO MEMBER(ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS)
+        INSERT INTO MEMBER(ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS, ROLE)
         VALUES (#{id}, #{pw}, #{name},
                 #{nickname}, #{phone}, #{address}, #{registNum}, #{reports})
     </insert>
 
     <select id="findAll" resultType="com.pj.sayyo.model.member.dto.MemberDto">
-        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS
+        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS, ROLE
         FROM MEMBER
     </select>
 
     <select id="login" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
-        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS
+        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS, ROLE
         FROM MEMBER
         WHERE ID = #{id} AND PW = #{pw}
     </select>
@@ -44,14 +44,14 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
-        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS
+        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS, ROLE
         FROM MEMBER
         WHERE NICKNAME = #{nickname}
     </select>
 
 
     <select id="findSearchById" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="com.pj.sayyo.model.member.dto.MemberDto">
-        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS
+        SELECT ID, PW, NAME, NICKNAME, PHONE, ADDRESS, REGIST_NUM, REPORTS, ROLE
         FROM MEMBER
         WHERE ID = #{id}
     </select>

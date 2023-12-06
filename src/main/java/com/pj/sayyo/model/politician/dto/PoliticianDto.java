@@ -30,6 +30,8 @@ public class PoliticianDto {
     private String blog;
     // 인스타 주소
     private String instagram;
+    // 페이스북 주소
+    private String facebook;
     // 카카오톡 주소
     private String kakao;
     // 정당 이름
@@ -78,6 +80,14 @@ public class PoliticianDto {
 
     public void setInstagram(String instagram) {
         this.instagram = instagram;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
     }
 
     public String getKakao() {
