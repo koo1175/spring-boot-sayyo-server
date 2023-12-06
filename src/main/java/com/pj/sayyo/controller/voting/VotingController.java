@@ -78,9 +78,10 @@ public class VotingController {
         System.out.println("이미 존재하는지 안하는지 ?"+exist);
         // 존재 안할 때 0 반환 -> 등록
         if(exist==0){
+            System.out.println("존재 안할 때 if문에 들어오게 되면서 이 문장이 콘솔에 찍힌다.");
             resultCnt = votingService.voted(votedDto);
             System.out.println(resultCnt);
-            // 임의로 member를 생성해둔뒤
+            // 임의로 member를 생성해둔 뒤
             MemberDto mem = new MemberDto();
             mem.setId(votedDto.getMemberId());
             // memberDto에 if를 넣어두고 해당 id의 회원 정보를 가져온다
