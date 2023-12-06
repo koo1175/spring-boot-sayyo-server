@@ -79,7 +79,7 @@ public class VotingController {
         // 존재 안할 때 0 반환 -> 등록
         if(exist==0){
             resultCnt = votingService.voted(votedDto);
-
+            System.out.println(resultCnt);
             // 임의로 member를 생성해둔뒤
             MemberDto mem = new MemberDto();
             mem.setId(votedDto.getMemberId());
