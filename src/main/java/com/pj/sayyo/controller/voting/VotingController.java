@@ -129,7 +129,7 @@ public class VotingController {
             votingDto.setNum(votedDto.getNum());
             votingService.voteScore(votingDto);
         }else{
-
+            resultCnt=0;
         }
 
         return resultCnt;
