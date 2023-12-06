@@ -39,7 +39,6 @@ public class LawsController {
         return mv;
     }
 
-
     @GetMapping("/findPol")
     @ResponseBody
     private HashMap<String, Object> findPol(){

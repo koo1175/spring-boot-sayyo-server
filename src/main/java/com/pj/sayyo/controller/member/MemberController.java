@@ -26,6 +26,25 @@ public class MemberController {
         return role.equals("관리자");
     }
 
+
+//    @PostMapping("/isPolitician")
+//    @ResponseBody
+//    private MemberDto isPolitician(@RequestBody MemberDto memberDto){
+//        MemberDto m = new MemberDto();
+//        // id를 입력받고
+//        String role = memberService.isAdmin(memberDto).getRole();
+//        // 정치인일 때는 true를 반환, 아닐 땐 false를 반환하도록 함
+//        if(role.equals("정치인")){
+//            m = memberService.findSearchById(memberDto);
+//            m
+//            return m.getName();
+//        }else{
+//
+//        }
+//
+//    }
+
+
     @PostMapping("/regist")
     @ResponseBody
     private int regist(@RequestBody MemberDto memberDto){
@@ -126,8 +145,9 @@ public class MemberController {
 
     @PostMapping("/report")
     @ResponseBody
-    public void report(@RequestBody MemberDto memberDto){
+    public int report(@RequestBody MemberDto memberDto){
         int resultCnt4 = memberService.report(memberDto);
         System.out.println("신고 완료 여부 : " + resultCnt4);
+        return resultCnt4;
     }
 }
