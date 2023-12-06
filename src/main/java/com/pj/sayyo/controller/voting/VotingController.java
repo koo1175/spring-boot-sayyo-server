@@ -95,7 +95,7 @@ public class VotingController {
             // 몇십대인지
             int thisYear = LocalDate.now().getYear();
             int birthYear = Integer.parseInt(registNum.substring(0,2));
-            int genderDigit = Character.getNumericValue(registNum.charAt(6));
+            int genderDigit = Character.getNumericValue(registNum.charAt(8));
             System.out.println("회원의 나이 : "+(thisYear - (2000 + birthYear) + 1));
             if(genderDigit < 3){
                 data.setAge((thisYear - (1900 + birthYear) + 1) / 10 * 10);
