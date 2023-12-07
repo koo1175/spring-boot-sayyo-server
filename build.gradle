@@ -25,6 +25,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
+	// chat new
+	implementation 'org.json:json:20200518'
+
 	// webCrawler
 	implementation 'org.jsoup:jsoup:1.13.1'
 
