@@ -24,6 +24,10 @@ public class LawsServiceImpl implements LawsService {
         return lawsMapper.findNew();
     }
     @Override
+    public List<LawsDto> findNewEight(){
+        return lawsMapper.findNewEight();
+    }
+    @Override
     public List<LawsDto> findPol() {
         return lawsMapper.findPol();
     }

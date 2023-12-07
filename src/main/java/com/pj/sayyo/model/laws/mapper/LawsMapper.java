@@ -10,6 +10,8 @@ public interface LawsMapper {
     int regist(LawsDto lawsDto);
     List<LawsDto> findAll();
     List<LawsDto> findNew();
+
+    List<LawsDto> findNewEight();
     List<LawsDto> findPol();
     int modify(LawsDto lawsDto);
     int delete(LawsDto lawsDto);

@@ -20,6 +20,13 @@
         WHERE KIND = '최신'
     </select>
 
+    <select id="findNewEight" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
+        SELECT *
+        FROM LAWS
+        WHERE KIND = '최신'
+        LIMIT 8
+    </select>
+
     <select id="findPol" resultType="com.pj.sayyo.model.laws.dto.LawsDto">
         SELECT *
         FROM LAWS

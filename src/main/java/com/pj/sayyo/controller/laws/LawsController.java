@@ -39,6 +39,16 @@ public class LawsController {
         return mv;
     }
 
+    @GetMapping("/findNewEight")
+    @ResponseBody
+    private HashMap<String, Object> findNewEight(){
+        HashMap<String, Object> mv = new HashMap<>();
+        List<LawsDto> list = lawsService.findNewEight();
+
+        mv.put("laws", list);
+        return mv;
+    }
+
     @GetMapping("/findPol")
     @ResponseBody
     private HashMap<String, Object> findPol(){
