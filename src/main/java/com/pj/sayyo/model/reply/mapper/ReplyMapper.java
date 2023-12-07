@@ -13,4 +13,5 @@ public interface ReplyMapper {
     int modify(ReplyDto replyDto);
     int delete(ReplyDto replyDto);
 
+    boolean isWriter(ReplyDto replyDto);
 }

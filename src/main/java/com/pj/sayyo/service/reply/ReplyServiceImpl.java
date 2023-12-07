@@ -32,4 +32,8 @@ public class ReplyServiceImpl implements ReplyService{
         return replyMapper.delete(replyDto);
     }
 
+    @Override
+    public boolean isWriter(ReplyDto replyDto){
+        return replyMapper.isWriter(replyDto);
+    }
 }

@@ -27,5 +27,10 @@
         WHERE ID = #{id}
     </delete>
 
+    <select id="isWriter" parameterType="com.pj.sayyo.model.reply.dto.ReplyDto" resultType="boolean">
+        SELECT COUNT(*)
+        FROM REPLY
+        WHERE ID = #{id} AND NICKNAME = #{nickname}
+    </select>
 
 </mapper>

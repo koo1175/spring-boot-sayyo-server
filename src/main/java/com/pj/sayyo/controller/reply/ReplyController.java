@@ -1,6 +1,7 @@
 package com.pj.sayyo.controller.reply;
 
 
+import com.pj.sayyo.model.inquiry.dto.InquiryDto;
 import com.pj.sayyo.model.politician.dto.PoliticianDto;
 import com.pj.sayyo.model.reply.dto.ReplyDto;
 import com.pj.sayyo.service.politician.PoliticianService;
@@ -57,5 +58,15 @@ public class ReplyController {
         System.out.println("삭제 완료 여부 : " + resultCnt3);
 
     }
+
+
+    @PostMapping("/isWriter")
+    @ResponseBody
+    public boolean isWriter(@RequestBody ReplyDto replyDto) {
+
+        // 해당 유저가 쓴 댓글이 맞다면 true
+        return replyService.isWriter(replyDto);
+    }
+
 
 }
