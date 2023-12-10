@@ -1,6 +1,7 @@
 package com.pj.sayyo.controller.pLike;
 
 import com.pj.sayyo.model.pLike.dto.PLikeDto;
+import com.pj.sayyo.model.politician.dto.PoliticianDto;
 import com.pj.sayyo.service.pLike.PLikeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,9 @@ public class PLikeController {
             }
         }
         int resultCnt = pLikeService.like(pLikeDto);
-        int resultCnt2 = pLikeService.polLike(pLikeDto);
+        PoliticianDto p = new PoliticianDto();
+        p.setRegion(pLikeDto.getRegion());
+        int resultCnt2 = pLikeService.polLike(p);
         mv.put("result", resultCnt);
         System.out.println(resultCnt);
         System.out.println(resultCnt2);
@@ -91,7 +94,9 @@ public class PLikeController {
         }
         // 테이블이 존재하지 않을땐 바로 여기로 넘어오게됨
         int resultCnt = pLikeService.dislike(pLikeDto);
-        int resultCnt2 = pLikeService.polDislike(pLikeDto);
+        PoliticianDto p = new PoliticianDto();
+        p.setRegion(pLikeDto.getRegion());
+        int resultCnt2 = pLikeService.polDislike(p);
         mv.put("result", resultCnt);
         System.out.println(resultCnt);
         System.out.println(resultCnt2);
@@ -119,12 +124,16 @@ public class PLikeController {
             // 좋아요가 눌려있을 경우 시장님 좋아요 취소해주자
             if(findState.getLikeState().toString().equals("1")){
                 System.out.println("이미 좋아요가 눌려있음을 인식");
-                resultCnt2 = pLikeService.polCancelLike(pLikeDto);
+                PoliticianDto p = new PoliticianDto();
+                p.setRegion(pLikeDto.getRegion());
+                resultCnt2 = pLikeService.polCancelLike(p);
                 System.out.println("resultCnt2 : " + resultCnt2);
             // 싫어요가 눌려있을 경우 시장님 싫어요 취소해주자
             }else if(findState.getLikeState().toString().equals("2")) {
                 System.out.println("이미 싫어요가 눌려있음을 인식");
-                resultCnt2 = pLikeService.polCancelDislike(pLikeDto);
+                PoliticianDto p = new PoliticianDto();
+                p.setRegion(pLikeDto.getRegion());
+                resultCnt2 = pLikeService.polCancelDislike(p);
                 System.out.println("resultCnt2 : " + resultCnt2);
             }
         }

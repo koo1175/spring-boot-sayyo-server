@@ -3,6 +3,7 @@ package com.pj.sayyo.service.pLike;
 import com.pj.sayyo.model.member.dto.MemberDto;
 import com.pj.sayyo.model.pLike.dto.PLikeDto;
 import com.pj.sayyo.model.pLike.mapper.PLikeMapper;
+import com.pj.sayyo.model.politician.dto.PoliticianDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,8 @@ public class PLikeServiceImpl implements PLikeService{
         return pLikeMapper.like(pLikeDto);
     }
     @Override
-    public int polLike(PLikeDto pLikeDto) {
-        return pLikeMapper.polLike(pLikeDto);
+    public int polLike(PoliticianDto politicianDto) {
+        return pLikeMapper.polLike(politicianDto);
     }
 
     @Override
@@ -28,8 +29,8 @@ public class PLikeServiceImpl implements PLikeService{
     }
 
     @Override
-    public int polDislike(PLikeDto pLikeDto) {
-        return pLikeMapper.polDislike(pLikeDto);
+    public int polDislike(PoliticianDto politicianDto) {
+        return pLikeMapper.polDislike(politicianDto);
     }
 
     @Override
@@ -38,13 +39,13 @@ public class PLikeServiceImpl implements PLikeService{
     }
 
     @Override
-    public int polCancelLike(PLikeDto pLikeDto) {
-        return pLikeMapper.polCancelLike(pLikeDto);
+    public int polCancelLike(PoliticianDto politicianDto) {
+        return pLikeMapper.polCancelLike(politicianDto);
     }
 
     @Override
-    public int polCancelDislike(PLikeDto pLikeDto) {
-        return pLikeMapper.polCancelDislike(pLikeDto);
+    public int polCancelDislike(PoliticianDto politicianDto) {
+        return pLikeMapper.polCancelDislike(politicianDto);
     }
 
 
