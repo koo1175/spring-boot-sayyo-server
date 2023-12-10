@@ -61,6 +61,12 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    public boolean isPolitician(MemberDto memberDto) {
+        return memberMapper.isPolitician(memberDto);
+    }
+
+
+    @Override
     public boolean isValidRegist(MemberDto memberDto) {
         return memberMapper.isValidRegist(memberDto);
     }

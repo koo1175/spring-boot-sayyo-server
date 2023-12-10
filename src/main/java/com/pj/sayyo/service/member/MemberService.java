@@ -16,6 +16,7 @@ public interface MemberService {
     MemberDto findSearchById(MemberDto memberDto);
 
     boolean isValidId(MemberDto memberDto);
-    boolean isValidRegist(MemberDto memberDto);
+    boolean isValidRegist(MemberDto memberDto);;
+    boolean isPolitician(MemberDto memberDto);
     MemberDto isAdmin(MemberDto memberDto);
 }

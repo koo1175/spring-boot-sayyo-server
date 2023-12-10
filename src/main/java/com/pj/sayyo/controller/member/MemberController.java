@@ -27,22 +27,12 @@ public class MemberController {
     }
 
 
-//    @PostMapping("/isPolitician")
-//    @ResponseBody
-//    private MemberDto isPolitician(@RequestBody MemberDto memberDto){
-//        MemberDto m = new MemberDto();
-//        // id를 입력받고
-//        String role = memberService.isAdmin(memberDto).getRole();
-//        // 정치인일 때는 true를 반환, 아닐 땐 false를 반환하도록 함
-//        if(role.equals("정치인")){
-//            m = memberService.findSearchById(memberDto);
-//            m
-//            return m.getName();
-//        }else{
-//
-//        }
-//
-//    }
+    @PostMapping("/isPolitician")
+    @ResponseBody
+    private boolean isPolitician(@RequestBody MemberDto memberDto){
+        // 입력받은 아이디가 '시장'님의 계정일때 true 반환
+        return memberService.isPolitician(memberDto);
+    }
 
 
     @PostMapping("/regist")

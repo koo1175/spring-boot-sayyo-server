@@ -73,4 +73,9 @@
     </select>
 
 
+    <select id="isPolitician" parameterType="com.pj.sayyo.model.member.dto.MemberDto" resultType="boolean">
+        SELECT ROLE FROM MEMBER WHERE ID = #{id} AND ROLE = '정치인'
+    </select>
+
+
 </mapper>
