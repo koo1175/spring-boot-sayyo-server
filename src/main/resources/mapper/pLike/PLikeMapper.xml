@@ -21,7 +21,7 @@
     </update>
 
 
-    <update id="polCancelLike" parameterType="com.pj.sayyo.politician.dto.PoliticianDto">
+    <update id="polCancelLike" parameterType="com.pj.sayyo.model.politician.dto.PoliticianDto">
         UPDATE POLITICIAN
         SET LIKES = LIKES-1
         WHERE REGION = #{region}
