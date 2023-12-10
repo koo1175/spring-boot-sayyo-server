@@ -58,7 +58,10 @@ public class PLikeController {
             pLikeService.deleteLike(pLikeDto);
             // 좋아요가 이미 눌려있을 때 취소하자
             if(findState.getLikeState().toString().equals("1")){
-                return cancelLike(pLikeDto);
+                PoliticianDto p = new PoliticianDto();
+                p.setRegion(pLikeDto.getRegion());
+                pLikeService.polCancelLike(p);
+                return mv;
             }
         }
         int resultCnt = pLikeService.like(pLikeDto);
