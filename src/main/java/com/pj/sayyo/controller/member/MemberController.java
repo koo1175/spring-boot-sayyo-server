@@ -30,6 +30,7 @@ public class MemberController {
     @PostMapping("/isPolitician")
     @ResponseBody
     private boolean isPolitician(@RequestBody MemberDto memberDto){
+
         // 입력받은 아이디가 '시장'님의 계정일때 true 반환
         return memberService.isPolitician(memberDto);
     }
