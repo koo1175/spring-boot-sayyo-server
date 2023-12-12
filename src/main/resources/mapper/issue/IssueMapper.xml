@@ -5,12 +5,12 @@
 
     <!--  ID 필드는 AUTO_INCREMENT로 AUTO COUNTING  -->
     <insert id="regist" parameterType="com.pj.sayyo.model.issue.dto.IssueDto">
-        INSERT INTO ISSUE(SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT)
-        VALUES (#{search}, #{title}, #{link}, #{image}, #{content}, #{magazine}, #{wrotetime}, #{newsLogo}, #{importScore}, #{loadCount})
+        INSERT INTO ISSUE(SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT, ACCURACY)
+        VALUES (#{search}, #{title}, #{link}, #{image}, #{content}, #{magazine}, #{wrotetime}, #{newsLogo}, #{importScore}, #{loadCount}, #{accuracy})
     </insert>
 
     <select id="findAll" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
-        SELECT SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT
+        SELECT SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT, ACCURACY
         FROM ISSUE
     </select>
 
@@ -32,7 +32,7 @@
     </delete>
 
     <select id="findSearch" parameterType="com.pj.sayyo.model.issue.dto.IssueDto" resultType="com.pj.sayyo.model.issue.dto.IssueDto">
-        SELECT SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT
+        SELECT SEARCH, TITLE, LINK, IMAGE, CONTENT, MAGAZINE, WROTETIME, NEWSLOGO, IMPORTSCORE, LOADCOUNT, ACCURACY
         FROM ISSUE
         WHERE SEARCH = #{search}
         ORDER BY IMPORTSCORE DESC

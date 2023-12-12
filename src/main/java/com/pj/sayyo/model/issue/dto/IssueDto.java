@@ -16,6 +16,7 @@ public class IssueDto {
     private int importScore;
 
     private int loadScore;
+    private String accuracy;
 
     public String getSearch() {
         return search;
@@ -95,5 +96,13 @@ public class IssueDto {
 
     public void setLoadScore(int loadScore) {
         this.loadScore = loadScore;
+    }
+
+    public String getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(String accuracy) {
+        this.accuracy = accuracy;
     }
 }
